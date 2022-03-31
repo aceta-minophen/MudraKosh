@@ -1,0 +1,17 @@
+{
+  "name": "mudrakosh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express.js": "^1.0.0",
+    "firebase-admin": "^10.0.2",
+    "nodemon": "^2.0.15"
+  }
+}
