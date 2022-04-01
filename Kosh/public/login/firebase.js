@@ -79,7 +79,7 @@ var uiConfig = {
     },
 
     signInFlow: 'popup',
-    signInSuccessUrl: '/success.html'
+    signInSuccessUrl: '../success.html'
     //signInSuccessUrl: 'https://www.google.com/'
 };
 
