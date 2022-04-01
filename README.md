@@ -1,4 +1,6 @@
 # MudraKosh
+<img src="C:\Computer\Hackathon\Mudra KOSH.png" width = "250" height = "250">
+
 ***Making more possible.***
 
 India is considered to be the second most unbanked nation with a statistic of 190 million unbanked adults. Due to this, and the added disadvantage of inability to offer any collateral, many individuals are unable to access loans from trustable sources at reasonable interest and sort to unreliable credit source.
