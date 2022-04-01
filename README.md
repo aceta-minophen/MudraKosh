@@ -1,5 +1,4 @@
 # MudraKosh
-<img src="C:\Computer\Hackathon\Mudra KOSH.png" width = "250" height = "250">
 
 ***Making more possible.***
 
