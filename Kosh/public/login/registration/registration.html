@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+</head>
+
+<body>
+    <p>Hello, </p>
+    <p id="user_Name"></p>
+
+
+    <form action="../../successLogin/success.html" method="POST" id="registrationform">
+        <h1>Register</h1>
+        <div class="alert"></div>
+        <fieldset>
+            <!-- Section 1 -->
+            <label for="salutation">Salutation:</label>
+            <select name="sal" id="salutation" required>
+                <optgroup label="Salutation">
+                    <option value="miss" id="sal_miss">Miss</option>
+                    <option value="mr" id="sal_mr">Mr.</option>
+                    <option value="mrs" id="sal_mrs">Mrs.</option>
+                </optgroup>
+            </select>
+            <legend><span class="section">1</span>Your Basic Info</legend>
+            <label class="" for="Fname">First Name:</label>
+            <input type="text" name="name" value="" id="firstname" required />
+
+            <label class="" for="Mname">Middle Name:</label>
+            <input type="text" name="name" value="" id="middlename" />
+
+            <label class="" for="Lname">Last Name:</label>
+            <input type="text" name="name" value="" id="lastname" required />
+
+            <label class="" for="email">Email:</label>
+            <input type="email" name="email" value="" id="email" required />
+
+            <label for="Phone">Phone Number:</label>
+            <input type="number" name="phno" value="" id="phone_number" required />
+        </fieldset>
+
+        <fieldset>
+            <!-- section 2 -->
+            <legend><span class="section">2</span>Profile</legend>
+
+            <label for="field">Field:</label>
+            <select name="field" id="field" required>
+                <optgroup label="Select your field">
+                    <option value="Agriculture" id="agriculture">Agriculture</option>
+                    <option value="Textile" id="textile">Textile</option>
+                    <option value="Minerals" id="minerals">Minerals</option>
+                    <option value="MSMEs" id="msmes">MSMEs</option>
+                </optgroup>
+            </select>
+            <br /><br />
+            <label>Role:</label>
+
+            <select id="role" required>
+                <option value="investor">Investor</option>
+                <option value="borrower">Borrower</option>
+            </select>
+
+
+
+    </form>
+
+    <button type="submit" sendMessage()>Register</button>
+
+
+
+    <pre id="object"></pre>
+
+    <script src="../../firebase.js"></script>
+    <script src="registration.js"></script>
+</body>
+
+</html>
