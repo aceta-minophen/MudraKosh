@@ -20,7 +20,7 @@ firebase.initializeApp(config);
 
 
 firebase.auth().setPersistence(
-    firebase.auth.Auth.Persistence.NONE);
+    firebase.auth.Auth.Persistence.LOCAL);
 var uiConfig = {
 
     signInOptions: [
@@ -79,7 +79,9 @@ var uiConfig = {
     },
 
     signInFlow: 'popup',
-    signInSuccessUrl: '../success.html'
+    signInSuccessUrl: 'registration/registration.html'
+    //signInSuccessUrl: 'login.html'
+    //signInSuccessUrl: '../successLogin/success.html'
     //signInSuccessUrl: 'https://www.google.com/'
 };
 
@@ -96,7 +98,7 @@ if (ui.isPendingRedirect()) {
 }
 
 
-firebase.auth().onAuthStateChanged(function (user) {
+/*firebase.auth().onAuthStateChanged(function (user) {
     // Make sure there is a valid user object
     if (user) {
         var script = document.createElement('script');
@@ -124,4 +126,20 @@ firebase.auth().onAuthStateChanged(function (user) {
         // Add to the document
         document.getElementsByTagName('head')[0].appendChild(script);
     }
-})
+})*/
+
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        //this.user = user;
+
+        //username.innerHTML = user.uid;
+        //username = user.uid;
+        //console.log(user.uid);
+        console.log("xyz");
+    }
+    else {
+        console.log("abc")
+    }
+});
+
