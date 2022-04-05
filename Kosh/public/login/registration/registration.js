@@ -1,61 +1,6 @@
-/*const preObject = document.getElementById('object');
-
-var ref = firebase.database().ref();
-ref.on("value", function (snapshot) {
-    preObject.innerHTML = JSON.stringify(snapshot.val(), null, 3);
-});
-
-var fName = document.getElementById('fname').value;
-var lName = document.getElementById('lname').value;
-
-function submit() {
-    let newref = ref.push();
-    newref.set({
-        users: {
-            user1: {
-                FirstName: fName,
-                LastName: lName
-            }
-        }
-    });
-}
-
-
-
-
-var userInfo = firebase.database().ref("user1/");*/
-
-/*function submit() {
-    userInfo.update({
-        "FirstName": fName,
-        "LastName": lName
-    });
-}*/
-
-
 var username = document.getElementById("user_Name");
 
 
-
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        this.user = user;
-
-        username.innerHTML = user.displayName;
-        UserID = user.uid;
-        console.log(UserID);
-
-    }
-    else {
-        console.log("abc");
-    }
-});
-
-const user = firebase.auth().currentUser;
-console.log(user.uid);
-
-
-let formMessage = firebase.database().ref('register/' + user.uid);
 
 //listen for submit event//(1)
 document
@@ -76,7 +21,7 @@ function formSubmit(e) {
     let role = document.querySelector('#role').value;
 
     //send message values
-    sendMessage(salu, fname, mname, lname, email, phoneNum, field, role);
+    //sendMessage(salu, fname, mname, lname, email, phoneNum, field, role);
 
     //Show Alert Message(5)
     document.querySelector('.alert').style.display = 'block';
@@ -88,13 +33,32 @@ function formSubmit(e) {
 
     //Form Reset After Submission(7)
     document.getElementById('registrationform').reset();
+
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            this.user = user;
+
+            username.innerHTML = user.displayName;
+            UserID = firebase.auth().currentUser.uid;
+            console.log(UserID);
+            writeUserData(UserID, salu, fname, mname, lname, email, phoneNum, field, role);
+
+        }
+        else {
+            console.log("User not signed in");
+        }
+    });
 }
 
-//Send Message to Firebase(4)
 
-function sendMessage(salu, fname, mname, lname, email, phoneNum, field, role) {
-    let newFormMessage = formMessage.push();
-    newFormMessage.set({
+
+var UserID;
+
+
+
+function writeUserData(userId, salu, fname, mname, lname, email, phoneNum, field, role) {
+    firebase.database().ref('users/' + userId).set({
         salutation: salu,
         firstName: fname,
         middlename: mname,
@@ -105,4 +69,3 @@ function sendMessage(salu, fname, mname, lname, email, phoneNum, field, role) {
         role: role
     });
 }
-
