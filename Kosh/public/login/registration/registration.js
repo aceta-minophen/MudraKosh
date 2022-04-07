@@ -1,6 +1,6 @@
-var username = document.getElementById("user_Name");
+const submitButton = document.getElementById("submitBtn");
 
-
+var flip = 0;
 
 //listen for submit event//(1)
 document
@@ -9,6 +9,7 @@ document
 
 //Submit form(1.2)
 function formSubmit(e) {
+
     e.preventDefault();
     // Get Values from the DOM
     let salu = document.querySelector('#salutation').value;
@@ -19,9 +20,6 @@ function formSubmit(e) {
     let phoneNum = document.querySelector('#phone_number').value;
     let field = document.querySelector('#field').value;
     let role = document.querySelector('#role').value;
-
-    //send message values
-    //sendMessage(salu, fname, mname, lname, email, phoneNum, field, role);
 
     //Show Alert Message(5)
     document.querySelector('.alert').style.display = 'block';
@@ -39,10 +37,11 @@ function formSubmit(e) {
         if (user) {
             this.user = user;
 
-            username.innerHTML = user.displayName;
+            //username.innerHTML = user.displayName;
             UserID = firebase.auth().currentUser.uid;
             console.log(UserID);
             writeUserData(UserID, salu, fname, mname, lname, email, phoneNum, field, role);
+
 
         }
         else {
@@ -51,10 +50,7 @@ function formSubmit(e) {
     });
 }
 
-
-
 var UserID;
-
 
 
 function writeUserData(userId, salu, fname, mname, lname, email, phoneNum, field, role) {
@@ -67,5 +63,12 @@ function writeUserData(userId, salu, fname, mname, lname, email, phoneNum, field
         phoneNumber: phoneNum,
         field: field,
         role: role
-    });
+    })
+        .then(function () {
+            console.log("Document successfully written");
+            document.location = "../../eKYC/ekyc.html";
+        })
+        .catch(function (error) {
+            console.error("Error writing the document: ", error);
+        })
 }
