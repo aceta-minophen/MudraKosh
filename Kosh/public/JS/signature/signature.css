@@ -1,0 +1,35 @@
+body,
+canvas,
+div,
+form,
+input {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    width: 100%;
+    padding: 1px;
+}
+
+canvas {
+    position: relative;
+    margin: 1px;
+    margin-left: 0px;
+    border: 1px solid #3a87ad;
+}
+
+h1,
+p {
+    padding-left: 2px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#controlPanel {
+    margin: 2px;
+}
+
+#saveSignature {
+    display: none;
+}
