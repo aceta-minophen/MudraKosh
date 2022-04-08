@@ -210,59 +210,64 @@ var zkSignature = (function () {
             //     document.body.appendChild(newImg);
             // });
 
+
+
             var canvas = document.getElementById("newSignature");
+
+            var link = document.getElementById('uploadSig');
+            link.setAttribute('download', '')
             // save canvas image as data url (png format by default)
-            var dataURL = canvas.toDataURL("image/png");
-            document.getElementById("saveSignature").src = dataURL;
+            // var dataURL = canvas.toDataURL("image/png");
+            // document.getElementById("saveSignature").src = dataURL;
 
-            var files = [];
-            document.getElementById("saveSignature").addEventListener("change", function (e) {
-                files = e.target.files;
-            });
+            // var files = [];
+            // document.getElementById("saveSignature").addEventListener("change", function (e) {
+            //     files = e.target.files;
+            // });
 
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    this.user = user;
-                    UserID = firebase.auth().currentUser.uid;
-                    console.log(UserID);
+            // firebase.auth().onAuthStateChanged(user => {
+            //     if (user) {
+            //         this.user = user;
+            //         UserID = firebase.auth().currentUser.uid;
+            //         console.log(UserID);
 
-                    document.getElementById("uploadSig").addEventListener("click", function () {
-                        //checks if files are selected
-                        if (files.length != 0) {
+            //         document.getElementById("uploadSig").addEventListener("click", function () {
+            //             //checks if files are selected
+            //             if (files.length != 0) {
 
-                            //Loops through all the selected files
-                            for (let i = 0; i < files.length; i++) {
+            //                 //Loops through all the selected files
+            //                 for (let i = 0; i < files.length; i++) {
 
-                                let fileName = "Signature";
+            //                     let fileName = "Signature";
 
-                                console.log(UserID);
+            //                     console.log(UserID);
 
-                                //create a storage reference
-                                var storage = firebase.storage().ref(`${UserID}/${fileName}`);
+            //                     //create a storage reference
+            //                     var storage = firebase.storage().ref(`${UserID}/${fileName}`);
 
-                                //upload file
-                                var upload = storage.put(files[i]);
+            //                     //upload file
+            //                     var upload = storage.put(files[i]);
 
-                                //update progress bar
-                                upload.on(
-                                    "state_changed",
+            //                     //update progress bar
+            //                     upload.on(
+            //                         "state_changed",
 
 
-                                    function error() {
-                                        alert("error uploading file");
-                                    }
-                                );
-                            }
-                        } else {
-                            alert("No file chosen");
-                        }
-                    });
+            //                         function error() {
+            //                             alert("error uploading file");
+            //                         }
+            //                     );
+            //                 }
+            //             } else {
+            //                 alert("No file chosen");
+            //             }
+            //         });
 
-                }
-                else {
-                    console.log("User not signed in");
-                }
-            });
+            //     }
+            //     else {
+            //         console.log("User not signed in");
+            //     }
+            // });
 
         }
 
