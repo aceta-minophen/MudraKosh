@@ -223,62 +223,70 @@ var zkSignature = (function () {
             function downloadImage(data, filename = 'untitled.jpeg') {
                 var a = document.createElement('a');
                 a.href = data;
+                //console.log(a.href);
                 a.download = filename;
+
+                a.id = "canvasImg";
                 document.body.appendChild(a);
                 a.click();
+                // var dataURL = canvas.toDataURL("image/png");
+                // document.getElementById("saveSignature").src = dataURL;
+                console.log(a);
+                var files = [];
+                console.log(document.getElementById("canvasImg"));
+                document.getElementById("canvasImg").addEventListener("change", function (e) {
+                    files = e.target.files;
+                    console.log(files);
+                });
+
+                firebase.auth().onAuthStateChanged(user => {
+                    if (user) {
+                        this.user = user;
+                        UserID = firebase.auth().currentUser.uid;
+                        console.log(UserID);
+
+                        document.getElementById("uploadSig").addEventListener("click", function () {
+                            //checks if files are selected
+                            if (files.length != 0) {
+
+                                //Loops through all the selected files
+                                for (let i = 0; i < files.length; i++) {
+
+                                    let fileName = "Signature";
+
+                                    console.log(UserID);
+
+                                    //create a storage reference
+                                    var storage = firebase.storage().ref(`${UserID}/${fileName}`);
+
+                                    //upload file
+                                    var upload = storage.put(files[i]);
+
+                                    console.log(upload);
+
+                                    //update progress bar
+                                    upload.on(
+                                        "state_changed",
+
+
+                                        function error() {
+                                            alert("error uploading file");
+                                        }
+                                    );
+                                }
+                            } else {
+                                alert("No file chosen");
+                            }
+                        });
+
+                    }
+                    else {
+                        console.log("User not signed in");
+                    }
+                });
             }
             // save canvas image as data url (png format by default)
-            // var dataURL = canvas.toDataURL("image/png");
-            // document.getElementById("saveSignature").src = dataURL;
 
-            // var files = [];
-            // document.getElementById("saveSignature").addEventListener("change", function (e) {
-            //     files = e.target.files;
-            // });
-
-            // firebase.auth().onAuthStateChanged(user => {
-            //     if (user) {
-            //         this.user = user;
-            //         UserID = firebase.auth().currentUser.uid;
-            //         console.log(UserID);
-
-            //         document.getElementById("uploadSig").addEventListener("click", function () {
-            //             //checks if files are selected
-            //             if (files.length != 0) {
-
-            //                 //Loops through all the selected files
-            //                 for (let i = 0; i < files.length; i++) {
-
-            //                     let fileName = "Signature";
-
-            //                     console.log(UserID);
-
-            //                     //create a storage reference
-            //                     var storage = firebase.storage().ref(`${UserID}/${fileName}`);
-
-            //                     //upload file
-            //                     var upload = storage.put(files[i]);
-
-            //                     //update progress bar
-            //                     upload.on(
-            //                         "state_changed",
-
-
-            //                         function error() {
-            //                             alert("error uploading file");
-            //                         }
-            //                     );
-            //                 }
-            //             } else {
-            //                 alert("No file chosen");
-            //             }
-            //         });
-
-            //     }
-            //     else {
-            //         console.log("User not signed in");
-            //     }
-            // });
 
         }
 
