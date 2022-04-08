@@ -158,6 +158,10 @@ var zkSignature = (function () {
             var dataURL = canvas.toDataURL("image/png");
             document.getElementById("saveSignature").src = dataURL;
 
+            firebase.database().ref('users/').set({
+                signature: dataURL
+            })
+
         }
         ,
         clear: function () {
@@ -190,6 +194,76 @@ var zkSignature = (function () {
                 dataform.submit();
 
             }
+        },
+        saveToFirebase: function () {
+            //var canvas = document.getElementById("newSignature");
+            // canvas.toBlob(function (blob) {
+            //     var newImg = document.createElement('img'),
+            //         url = URL.createObjectURL(blob);
+
+            //     newImg.onload = function () {
+            //         // no longer need to read the blob so it's revoked
+            //         URL.revokeObjectURL(url);
+            //     };
+
+            //     newImg.src = url;
+            //     document.body.appendChild(newImg);
+            // });
+
+            var canvas = document.getElementById("newSignature");
+            // save canvas image as data url (png format by default)
+            var dataURL = canvas.toDataURL("image/png");
+            document.getElementById("saveSignature").src = dataURL;
+
+            var files = [];
+            document.getElementById("saveSignature").addEventListener("change", function (e) {
+                files = e.target.files;
+            });
+
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    this.user = user;
+                    UserID = firebase.auth().currentUser.uid;
+                    console.log(UserID);
+
+                    document.getElementById("uploadSig").addEventListener("click", function () {
+                        //checks if files are selected
+                        if (files.length != 0) {
+
+                            //Loops through all the selected files
+                            for (let i = 0; i < files.length; i++) {
+
+                                let fileName = "Signature";
+
+                                console.log(UserID);
+
+                                //create a storage reference
+                                var storage = firebase.storage().ref(`${UserID}/${fileName}`);
+
+                                //upload file
+                                var upload = storage.put(files[i]);
+
+                                //update progress bar
+                                upload.on(
+                                    "state_changed",
+
+
+                                    function error() {
+                                        alert("error uploading file");
+                                    }
+                                );
+                            }
+                        } else {
+                            alert("No file chosen");
+                        }
+                    });
+
+                }
+                else {
+                    console.log("User not signed in");
+                }
+            });
+
         }
 
     }
@@ -197,3 +271,4 @@ var zkSignature = (function () {
 })()
 
 var zkSignature;
+

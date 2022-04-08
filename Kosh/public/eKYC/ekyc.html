@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="../JS/signature/signature.css">
     <script src="../JS/signature/signature.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -85,29 +86,30 @@
             <br>
             <fieldset>
                 <legend><span class="section"></span>Applicant's Gender</legend>
-                <form>
-                    <input type="radio" value="Female">
-                    <label for="female">Female</label>
-                    <input type="radio" value="Male">
-                    <label for="male">Male</label>
-                    <input type="radio" value="Other">
-                    <label for="other">Other</label>
-                </form>
+                <label for="gender">Gender:</label>
+                <select name="Gen" id="gender" required>
+                    <optgroup label="Gender">
+                        <option value="female" id="female">Female</option>
+                        <option value="male" id="male">Male</option>
+                        <option value="other" id="other">Other</option>
+                    </optgroup>
+                </select>
             </fieldset>
             <br>
             <fieldset>
                 <legend><span class="section"></span>Applicant's Marital Status</legend>
-                <form>
-                    <input type="radio" value="single">
-                    <label for="single">Single</label>
-                    <input type="radio" value="Married">
-                    <label for="married">Married</label>
-                </form>
+                <label for="marital-Status">Marital Status:</label>
+                <select name="Mari-Stat" id="marital-status" required>
+                    <optgroup label="Marital-Status">
+                        <option value="single" id="single">Single</option>
+                        <option value="married" id="married">Married</option>
+                    </optgroup>
+                </select>
             </fieldset>
             <br>
             <fieldset>
                 <legend><span class="section"></span>Date of Birth</legend>
-                <input type="date">
+                <input type="date" id="dob">
             </fieldset>
             <br>
             <fieldset>
@@ -375,36 +377,32 @@
             <br>
             <fieldset>
                 <legend><span class="section"></span>Status</legend>
-                <form>
-                    <input type="radio" value="Resident">
-                    <label for="resident">Resident Individual</label>
-                    <input type="radio" value="Non-Resident">
-                    <label for="non-resident">Non-Resident Individual</label>
-                    <input type="radio" value="Foreign">
-                    <label for="foreign">Foreign National</label>
-                </form>
+                <label for="Status">Status:</label>
+                <select name="Stat" id="status" required>
+                    <optgroup label="Status">
+                        <option value="resident" id="resident">Resident Individual</option>
+                        <option value="non-resident" id="non-resident">Non-Resident Individual</option>
+                        <option value="foreign" id="foreign">Foreign National</option>
+                    </optgroup>
+                </select>
             </fieldset>
 
 
             <br>
             <fieldset>
                 <legend><span class="section"></span>Proof of Identity</legend>
-                <form>
-                    <input type="radio" value="UID">
-                    <label for="uid">UID</label>
-                    <input type="radio" value="PAN">
-                    <label for="pan">PAN Card</label>
-                    <input type="radio" value="Aadhaar-Card">
-                    <label for="aadhaar">Aadhaar Card</label>
-                    <input type="radio" value="Voter-ID">
-                    <label for="voter-id">Voter ID</label>
-                    <input type="radio" value="Passport">
-                    <label for="passport">Passport</label>
-                    <input type="radio" value="Driving-Licence">
-                    <label for="driving-licence">Driving Licence</label>
-                    <input type="radio" value="Other">
-                    <label for="other">Other</label>
-                </form>
+                <label for="Proof-of-Identity">Proof of Identity:</label>
+                <select name="Proof-of-identity" id="proof-of-identity" required>
+                    <optgroup label="Proof of Identity">
+                        <option value="uid" id="uid">UID</option>
+                        <option value="aadhaar" id="aadhaar">Aadhaar Card</option>
+                        <option value="pan" id="pan">PAN Card</option>
+                        <option value="voter-id" id="voter-id">Voter ID</option>
+                        <option value="passport" id="passport">Passport</option>
+                        <option value="driving-licence" id="driving-licence">Driving Licence</option>
+                        <option value="other" id="other">Other</option>
+                    </optgroup>
+                </select>
             </fieldset>
 
             <br>
@@ -433,11 +431,11 @@
             <fieldset>
                 <legend><span class="section"></span>Address for Correspondence</legend>
                 <div class="form-group">
-                    <input type="street" class="form-control" id="autocomplete" placeholder="Street">
-                    <input type="city" class="form-control" id="inputCity" placeholder="City">
-                    <input type="state" class="form-control" id="inputState" placeholder="State">
-                    <input type="zip" class="form-control" id="inputZip" placeholder="Zip">
-                    <select id="country" name="country">
+                    <input type="street" class="form-control" id="Street1" placeholder="Street">
+                    <input type="city" class="form-control" id="inputCity1" placeholder="City">
+                    <input type="state" class="form-control" id="inputState1" placeholder="State">
+                    <input type="zip" class="form-control" id="inputZip1" placeholder="Zip">
+                    <select id="country1" name="country">
                         <option>select country</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Aland Islands</option>
@@ -710,16 +708,15 @@
             <fieldset>
                 <legend><span class="section"></span>Proof of Address to be Provided by the Applicant (Select at least
                     2)</legend>
-                <input type="Checkbox"> Passport
-                <input type="Checkbox"> Driving License
-                <input type="Checkbox"> Latest Telephone Bill
-                <input type="Checkbox"> Latest Gas Bill
-                <input type="Checkbox"> Latest Electricity Bill
-                <input type="Checkbox"> Ration Card
-                <input type="Checkbox"> Voter Identity Card
-                <input type="Checkbox"> Other
+                <input type="Checkbox" name="proofOfAdd1" value="Passport"> Passport
+                <input type="Checkbox" name="proofOfAdd1" value="Driving License"> Driving License
+                <input type="Checkbox" name="proofOfAdd1" value="Latest Telephone Bill"> Latest Telephone Bill
+                <input type="Checkbox" name="proofOfAdd1" value="Latest Gas Bill"> Latest Gas Bill
+                <input type="Checkbox" name="proofOfAdd1" value="Latest Electricity Bill"> Latest Electricity Bill
+                <input type="Checkbox" name="proofOfAdd1" value="Ration Card"> Ration Card
+                <input type="Checkbox" name="proofOfAdd1" value="Voter Identity Card"> Voter Identity Card
+                <input type="Checkbox" name="proofOfAdd1" value="Other"> Other
             </fieldset>
-
             <br>
 
             <fieldset>
@@ -764,11 +761,11 @@
                 <legend><span class="section"></span>Permanent Address of Resident Applicant if Different from Above
                 </legend>
                 <div class="form-group">
-                    <input type="street" class="form-control" id="autocomplete" placeholder="Street">
-                    <input type="city" class="form-control" id="inputCity" placeholder="City">
-                    <input type="state" class="form-control" id="inputState" placeholder="State">
-                    <input type="zip" class="form-control" id="inputZip" placeholder="Zip">
-                    <select id="country" name="country">
+                    <input type="street" class="form-control" id="Street2" placeholder="Street">
+                    <input type="city" class="form-control" id="inputCity2" placeholder="City">
+                    <input type="state" class="form-control" id="inputState2" placeholder="State">
+                    <input type="zip" class="form-control" id="inputZip2" placeholder="Zip">
+                    <select id="country2" name="country">
                         <option>select country</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Aland Islands</option>
@@ -1031,14 +1028,14 @@
             <fieldset>
                 <legend><span class="section"></span>Proof of Address to be Provided by the Applicant (Select at least
                     2)</legend>
-                <input type="Checkbox"> Passport
-                <input type="Checkbox"> Driving License
-                <input type="Checkbox"> Latest Telephone Bill
-                <input type="Checkbox"> Latest Gas Bill
-                <input type="Checkbox"> Latest Electricity Bill
-                <input type="Checkbox"> Ration Card
-                <input type="Checkbox"> Voter Identity Card
-                <input type="Checkbox"> Other
+                <input type="Checkbox" name="proofOfAdd2" value="Passport"> Passport
+                <input type="Checkbox" name="proofOfAdd2" value="Driving License"> Driving License
+                <input type="Checkbox" name="proofOfAdd2" value="Latest Telephone Bill"> Latest Telephone Bill
+                <input type="Checkbox" name="proofOfAdd2" value="Latest Gas Bill"> Latest Gas Bill
+                <input type="Checkbox" name="proofOfAdd2" value="Latest Electricity Bill"> Latest Electricity Bill
+                <input type="Checkbox" name="proofOfAdd2" value="Ration Card"> Ration Card
+                <input type="Checkbox" name="proofOfAdd2" value="Voter Identity Card"> Voter Identity Card
+                <input type="Checkbox" name="proofOfAdd2" value="Other"> Other
             </fieldset>
 
             <br>
@@ -1113,6 +1110,9 @@
                     <button type="button" onclick="zkSignature.clear()">
                         Clear Signature
                     </button>
+                    <button type="button" id="uploadSig" onclick="zkSignature.saveToFirebase()">
+                        Upload Signature
+                    </button>
                     <br />
                     <img id="saveSignature" alt="Saved image png" />
                 </div>
@@ -1144,6 +1144,7 @@
     <script src="../JS/uploadingFiles/4uploadingAddProof2.js"></script>
     <script src="../JS/uploadingFiles/5uploadingPermAdd1.js"></script>
     <script src="../JS/uploadingFiles/6uploadingPermAdd2.js"></script>
+    <script src="../JS/checkingOptions/checkbox.js"></script>
 
 </body>
 
