@@ -212,10 +212,21 @@ var zkSignature = (function () {
 
 
 
-            var canvas = document.getElementById("newSignature");
+            var canvas = document.querySelector('#newSignature');
 
-            var link = document.getElementById('uploadSig');
-            link.setAttribute('download', '')
+            var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+
+            downloadImage(dataURL, 'my-canvas.jpeg');
+
+
+            // Save | Download image
+            function downloadImage(data, filename = 'untitled.jpeg') {
+                var a = document.createElement('a');
+                a.href = data;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+            }
             // save canvas image as data url (png format by default)
             // var dataURL = canvas.toDataURL("image/png");
             // document.getElementById("saveSignature").src = dataURL;
