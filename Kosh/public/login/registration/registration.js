@@ -54,7 +54,7 @@ var UserID;
 
 
 function writeUserData(userId, salu, fname, mname, lname, email, phoneNum, field, role) {
-    firebase.database().ref('users/' + userId).set({
+    firebase.database().ref('users/' + userId + '/registration/').set({
         salutation: salu,
         firstName: fname,
         middlename: mname,

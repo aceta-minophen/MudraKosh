@@ -109,12 +109,12 @@
             <br>
             <fieldset>
                 <legend><span class="section"></span>Date of Birth</legend>
-                <input type="date" id="dob">
+                <input type="date" id="dob" required>
             </fieldset>
             <br>
             <fieldset>
                 <legend><span class="section"></span>Nationality</legend>
-                <select id="country" name="country">
+                <select id="country" name="country" required>
                     <option>select country</option>
                     <option value="AF">Afghanistan</option>
                     <option value="AX">Aland Islands</option>
@@ -431,11 +431,11 @@
             <fieldset>
                 <legend><span class="section"></span>Address for Correspondence</legend>
                 <div class="form-group">
-                    <input type="street" class="form-control" id="Street1" placeholder="Street">
-                    <input type="city" class="form-control" id="inputCity1" placeholder="City">
-                    <input type="state" class="form-control" id="inputState1" placeholder="State">
-                    <input type="zip" class="form-control" id="inputZip1" placeholder="Zip">
-                    <select id="country1" name="country">
+                    <input type="street" class="form-control" id="Street1" placeholder="Street" required>
+                    <input type="city" class="form-control" id="inputCity1" placeholder="City" required>
+                    <input type="state" class="form-control" id="inputState1" placeholder="State" required>
+                    <input type="zip" class="form-control" id="inputZip1" placeholder="Zip" required>
+                    <select id="country1" name="country" required>
                         <option>select country</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Aland Islands</option>
@@ -1098,9 +1098,20 @@
             <br>
             <fieldset>
                 <legend><span class="section"></span>Signature of the Applicant</legend>
-                <div id="wrapper">
+                <div id="signature">
+                    <div class="drop-zone">
+                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                        <input id="signature-file" accept=".png, .jpeg, .jpg, .pdf" type="file" name="myFile"
+                            class="drop-zone__input">
+                    </div>
+                    <p>Acceptable file types: .png, .jpeg, .jpg, .pdf</p>
+                    <button id="send7">Upload</button>
+                    <p id="uploading7"></p>
+                    <progress value="0" max="100" id="progress7"></progress>
+                </div>
+                <!-- <div id="wrapper">
                     <div id="canvas">
-                        <!-- <canvas id="newSignature" width="464" height="304"></canvas> -->
+                        <canvas id="newSignature" width="464" height="304"></canvas>
                     </div>
 
                     <script>
@@ -1115,13 +1126,13 @@
                     </button>
                     <br />
                     <img id="saveSignature" alt="Saved image png" />
-                </div>
+                </div> -->
             </fieldset>
 
             <br>
             <fieldset>
                 <legend><span class="section"></span>Date Signed</legend>
-                <input type="date" id="datePicker">
+                <input type="date" id="datePicker" required>
                 <script>document.getElementById('datePicker').valueAsDate = new Date();</script>
             </fieldset>
 
@@ -1136,6 +1147,7 @@
     <br></br>
 
     <script src="../firebase.js"></script>
+    <script src="../JS/checkingOptions/checkbox.js"></script>
     <script src="ekyc.js"></script>
     <script src="../JS/dragndrop/dragndrop.js"></script>
     <script src="../JS/uploadingFiles/1uploadPassPhoto.js"></script>
@@ -1144,7 +1156,8 @@
     <script src="../JS/uploadingFiles/4uploadingAddProof2.js"></script>
     <script src="../JS/uploadingFiles/5uploadingPermAdd1.js"></script>
     <script src="../JS/uploadingFiles/6uploadingPermAdd2.js"></script>
-    <script src="../JS/checkingOptions/checkbox.js"></script>
+    <script src="../JS/uploadingFiles/7signature.js"></script>
+
 
 </body>
 
