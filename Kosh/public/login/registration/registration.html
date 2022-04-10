@@ -8,19 +8,101 @@
     <title>Registration</title>
     <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
     <link rel="stylesheet" href="resgistration.css">
-    <link rel="stylesheet" href="../../styles.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+ <style type="text/css">
+
+        body {
+            margin:50px 100px; padding:0px;
+            text-align:center;
+            background-color: rgb(190, 217, 217);
+        
+        }
+        /* label,input { */
+         /* display: block;
+         width: 150px;
+         float: center;
+         margin-bottom: 10px;
+        }
+        
+        label {
+         text-align: left;
+         width: 75px;
+         padding-right: 20px;
+        }
+        
+        br {
+         clear: center;
+        }
+        label{
+    width:240px;
+    display: inline-block;
+    
+    
+} */
+        
+        
+            </style> -->
 </head>
 
 <body>
-    <p>Hello, </p>
+    <!-- <video autoplay muted loop id="myVideo">
+        <source src="NaughtyDapperCatfish-mobile.mp4" type="video/mp4">
+      </video> -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+          <a href="#" class="navbar-brand">MudraKosh</a>
+  
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navmenu"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="#home" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="#textiles" class="nav-link">Contact Us</a>
+              </li>
+              <!--  -->
+              <a href="#login" class="nav-link"><button class="btn btn-dark btn-lg" type="button">Login</button</a>
+              </li>
+               
+  
+  
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- <h1><p>Hello there ,Welcome to MudraKosh we are here to make your dream more possible. </p></h1> -->
     <!--<p id="user_Name"></p>-->
 
 
     <form target="_blank" method="POST" id="registrationform">
-        <h1 id="register-header">Register</h1>
+        <h2>Register</h2>
+        <h3><p>Hello there ,Welcome to MudraKosh, we are here to make your dream more possible. </p></h3>
+        <h2>Register</h2>
         <div class="alert"></div>
         <fieldset>
             <!-- Section 1 -->
+            <legend><span class="section"></span>Fill out this basic Information </legend>
+            <legend><span class="section"></span></legend>
+            <legend><span class="section"></span></legend>
             <label for="salutation">Salutation:</label>
             <select name="sal" id="salutation" required>
                 <optgroup label="Salutation">
@@ -29,7 +111,7 @@
                     <option value="mrs" id="sal_mrs">Mrs.</option>
                 </optgroup>
             </select>
-            <legend><span class="section">1</span>Your Basic Info</legend>
+            <!-- <legend><span class="section"></span>fill out this basic Information</legend> -->
             <label class="" for="Fname">First Name:</label>
             <input type="text" name="name" value="" id="firstname" required />
 
@@ -38,18 +120,22 @@
 
             <label class="" for="Lname">Last Name:</label>
             <input type="text" name="name" value="" id="lastname" required />
-
-            <label class="" for="email">Email:</label>
+<ul>       
+            <label class="" for="email">Email Id:</label>
             <input type="email" name="email" value="" id="email" required />
+</ul>
+<p>
 
+</p>
+            <ul>
             <label for="Phone">Phone Number:</label>
             <input type="number" name="phno" value="" id="phone_number" required />
+            </ul>
         </fieldset>
 
         <fieldset>
             <!-- section 2 -->
-            <legend><span class="section">2</span>Profile</legend>
-
+            <legend><span class="section"></span>Profile</legend>
             <label for="field">Field:</label>
             <select name="field" id="field" required>
                 <optgroup label="Select your field">
@@ -66,13 +152,28 @@
                 <option value="investor">Investor</option>
                 <option value="borrower">Borrower</option>
             </select>
+<p>
+
+</p>
             <button type="submit" id="submitBtn">Register</button>
+
+            
+            </form>
     </form>
 
     <pre id="object"></pre>
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+  <a href="#"><i class="bi bi-twitter text-light mx-1"></i></a>
+  <a href="#"><i class="bi bi-facebook text-light mx-1"></i></a>
+            <a href="#"><i class="bi bi-linkedin text-light mx-1"></i></a>
+  <div class="container">
+    <p class="lead">Digital lending&copy;MudraKosh </p>
+
 
     <script src="../../firebase.js"></script>
     <script src="registration.js"></script>
+  </div>
+  
 </body>
 
 </html>
