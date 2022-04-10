@@ -45,14 +45,16 @@ body {
     color: #0062cc;
 }
 
-.profile-edit-btn {
+.app-loan-btn {
     border: none;
     border-radius: 1.5rem;
-    width: 70%;
-    padding: 2%;
+    width: 100%;
+    padding: 5%;
     font-weight: 600;
     color: #6c757d;
     cursor: pointer;
+
+    /* font-size: 30px; */
 }
 
 .proile-rating {
