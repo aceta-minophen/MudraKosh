@@ -17,7 +17,12 @@ var config = {
 
 
 firebase.initializeApp(config);
+// let signInURL = 'registration/registration.html';
 
+var signInURL = '';
+
+
+console.log(signInURL);
 
 firebase.auth().setPersistence(
     firebase.auth.Auth.Persistence.LOCAL);
@@ -79,10 +84,57 @@ var uiConfig = {
     },
 
     signInFlow: 'popup',
-    signInSuccessUrl: 'registration/registration.html'
+
+    //signInSuccessUrl: signInURL,
     //signInSuccessUrl: 'login.html'
     //signInSuccessUrl: '../successLogin/success.html'
     //signInSuccessUrl: 'https://www.google.com/'
+
+    'callbacks': {
+        'signInSuccess': function () {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    this.user = user;
+
+                    //username.innerHTML = user.displayName;
+                    UserID = firebase.auth().currentUser.uid;
+                    console.log(UserID);
+
+                    firebase.database().ref('users/' + UserID + '/registration/role').once('value', (snap) => {
+                        var role = snap.val();
+                        console.log(role);
+
+                        let isSigned = false;
+
+                        if (role == null) {
+                            isSigned = false;
+                            window.location.href = 'registration/registration.html';
+
+                        } else if (role == 'borrower') {
+                            isSigned = true;
+                            window.location.href = '../profile/borrower/borrowerProfile.html';
+                            //signInURL = 'registration/registration.html';
+                        } else if (role == 'investor') {
+                            isSigned = true;
+                            window.location.href = '../profile/investor/investorProfile.html';
+                        }
+
+                        console.log(isSigned);
+                    });
+
+                    console.log(signInURL);
+
+
+
+                }
+                else {
+                    console.log("User not signed in");
+                }
+            });
+            return false;
+        }
+    }
+
 };
 
 
@@ -96,37 +148,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
 if (ui.isPendingRedirect()) {
     ui.start('#firebaseui-auth-container', uiConfig);
 }
-
-
-/*firebase.auth().onAuthStateChanged(function (user) {
-    // Make sure there is a valid user object
-    if (user) {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://apis.google.com/js/api.js';
-        // Once the Google API Client is loaded, you can run your code
-        script.onload = function (e) {
-            // Initialize the Google API Client with the config object
-            gapi.client.init({
-                apiKey: config.apiKey,
-                clientId: config.clientID,
-                discoveryDocs: config.discoveryDocs,
-                scope: config.scopes.join(' '),
-            })
-                // Loading is finished, so start the app
-                .then(function () {
-                    // Make sure the Google API Client is properly signed in
-                    if (gapi.auth2.getAuthInstance().isSignedIn.get()) {
-                        startApp(user);
-                    } else {
-                        firebase.auth().signOut(); // Something went wrong, sign out
-                    }
-                })
-        }
-        // Add to the document
-        document.getElementsByTagName('head')[0].appendChild(script);
-    }
-})*/
 
 
 firebase.auth().onAuthStateChanged(user => {
