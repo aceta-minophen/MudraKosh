@@ -1,5 +1,20 @@
 const submitButton = document.getElementById("submitBtn");
 
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        this.user = user;
+
+        //username.innerHTML = user.displayName;
+        UserID = firebase.auth().currentUser.uid;
+        console.log(UserID);
+
+
+    }
+    else {
+        console.log("User not signed in");
+    }
+});
+
 var flip = 0;
 
 //listen for submit event//(1)
