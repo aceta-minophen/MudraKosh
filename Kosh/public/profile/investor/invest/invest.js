@@ -1,8 +1,3 @@
-function selectField() {
-    let field = document.getElementById("select-field").getAttribute('value');
-    console.log(field);
-}
-
 let invAmt = document.getElementById("invest-amt");
 
 let amtBtn = document.getElementById("amt");
