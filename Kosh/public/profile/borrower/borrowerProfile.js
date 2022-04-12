@@ -56,8 +56,39 @@ firebase.auth().onAuthStateChanged(user => {
             console.log(field);
             document.getElementById("field1").innerHTML = field;
         });
+        firebase.database().ref('users/' + UserID + '/loanApplication/date').once('value', (snap) => {
+            var date = snap.val();
+            console.log(date);
+            document.getElementById("loan-app-date").innerHTML = date;
+        });
+        firebase.database().ref('users/' + UserID + '/loanApplication/loanAmountt').once('value', (snap) => {
+            var loanAmt = snap.val();
+            console.log(loanAmt);
+            document.getElementById("loan-amt").innerHTML = loanAmt;
+        });
 
+        firebase.database().ref('users/' + UserID + '/loanApplication/crop').once('value', (snap) => {
+            var crop = snap.val();
+            console.log(crop);
 
+            let status = document.getElementById("status");
+
+            let loanAppBtn = document.getElementById("not-btn");
+
+            if (crop == null) {
+                document.getElementById("status").innerHTML = "Loan not applied";
+                status = "Loan Not Applied";
+                status.innerHTML;
+                console.log(status);
+
+            } else {
+                document.getElementById("status").innerHTML = "Loan is in the process of being approved.";
+                status = "Loan is in the process of being approved.";
+                status.innerHTML;
+                console.log(status);
+                loanAppBtn.style.display = "none";
+            }
+        });
     }
     else {
         console.log("User not signed in");
@@ -79,3 +110,6 @@ function getFileUrl(fileName) {
 
 }
 
+var today = new Date();
+var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+console.log(date);

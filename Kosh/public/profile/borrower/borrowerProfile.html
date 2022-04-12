@@ -44,7 +44,7 @@
                             }
                         </style>
                         <h6 id="field"></h6>
-                        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                        <p class="proile-rating">LOAN STATUS : <span id="status"></span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -52,7 +52,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                    aria-controls="profile" aria-selected="false">Timeline</a>
+                                    aria-controls="profile" aria-selected="false">Track Your Loan</a>
                             </li>
                         </ul>
                     </div>
@@ -114,60 +114,69 @@
                                     <p id="field1"></p>
                                 </div>
                             </div>
+                            <br>
+                            <br>
+                            <br>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque nesciunt mollitia dicta,
+                                repellendus non blanditiis, odit consectetur nam quas dolor accusantium molestias iusto
+                                fugit consequatur. Optio consequatur blanditiis pariatur cumque!</p>
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Experience</label>
+                                    <label>Date of loan application</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Expert</p>
+                                    <p id="loan-app-date">-</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Hourly Rate</label>
+                                    <label>Loan Amount (Rs.)</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>10$/hr</p>
+                                    <p id="loan-amt">-</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Total Projects</label>
+                                    <label>Date of loan approval</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>230</p>
+                                    <p id="approval-date">-</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>English Level</label>
+                                    <label>Loan Distribution</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Expert</p>
+                                    <p id="loan-dist">-</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>Availability</label>
+                                    <label>Upcoming interest return date</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>6 months</p>
+                                    <p>-</p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br />
-                                    <p>Your detail description</p>
+                                <div class="col-md-6">
+                                    <label>Amount to be returned</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>-</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button class="app-loan-btn" id="">Apply for
-                        Loan</button>
+                    <a class="app-loan-btn" id="not-btn" onclick="location.href='loanApplication/loanApp.html'">Apply
+                        for
+                        Loan</a>
                 </div>
             </div>
         </form>

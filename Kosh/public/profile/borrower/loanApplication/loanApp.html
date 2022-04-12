@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application</title>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+</head>
+
+<body>
+
+    <div class="userName">
+        <p class="child">Hello, </p>
+        <p id="firstName" class="child"></p>
+        <p id="lastName" class="child"> </p>
+    </div>
+    <style>
+        .profile-head {
+            white-space: nowrap;
+        }
+
+        .child {
+            display: inline-block;
+        }
+    </style>
+
+
+    <form target="_blank" method="POST" id="registrationform">
+        <h2>Loan Application</h2>
+        <div class="alert"></div>
+        <fieldset>
+            <!-- Section 1 -->
+            <legend><span class="section"></span>Fill out this basic Information</legend>
+            <legend><span class="section"></span></legend>
+            <legend><span class="section"></span></legend>
+            <label for="loan-amt">Loan Amount (Rs.)</label>
+            <select name="loan-amt" id="loan" required>
+                <optgroup label="Select the Loan Amount">
+                    <option value="10000">10000</option>
+                    <option value="15000">15000</option>
+                    <option value="20000">20000</option>
+                </optgroup>
+            </select>
+            <!-- <legend><span class="section"></span>fill out this basic Information</legend> -->
+            <label class="" for="loan-amt">Enter the amount:</label>
+            <input type="number" name="name" value="" id="loan-amt" required />
+
+            <div class="address">
+                <label>Is this your address?</label>
+                <p id="address"></p>
+                <select name="address-correct" id="address-correct" required>
+                    <optgroup label="Is the address correct?">
+                        <option value="address-correct">Yes</option>
+                        <option value="address-wrong">No</option>
+                    </optgroup>
+                </select>
+            </div>
+            <label>Enter reason for obtaining loan in the selected field: </label>
+            <p id="field"></p>
+            <label for="loan-reason">Select the crop you wish to plant:</label>
+            <select name="Select the crop" id="crop" required>
+                <optgroup label="Crop">
+                    <option value="wheat">Wheat</option>
+                    <option value="rice">Rice</option>
+                </optgroup>
+                <optgroup label="Pulses">
+                    <option value="gram">Gram</option>
+                    <option value="lentil">Lentil</option>
+                    <option value="fieldpea">Fieldpea</option>
+                    <option value="kulthi">Kulthi</option>
+                    <option value="urdbean">Urdbean</option>
+                    <option value="moongbean">Moongbean</option>
+                    <option value="lathyrus">Lathyrus</option>
+                    <option value="other pulses">Other Pulses</option>
+                </optgroup>
+                <optgroup label="Coarse-cum-Nutri">
+                    <option value="jowar">Jowar</option>
+                    <option value="bajra">Bajra</option>
+                    <option value="ragi">Ragi</option>
+                    <option value="maize">Maize</option>
+                    <option value="barley">Barley</option>
+                </optgroup>
+                <optgroup label="Oilseeds">
+                    <option value="rapeseed & mustard">Rapeseed & Mustard</option>
+                    <option value="groundnut">Groundnut</option>
+                    <option value="safflower">Safflower</option>
+                    <option value="sunflower">Sunflower</option>
+                    <option value="sesamum">Sesamum</option>
+                    <option value="linseed">Linseed</option>
+                    <option value="other oilseeds">Other Oilseeds</option>
+                </optgroup>
+            </select>
+            <br>
+            <br>
+            <label for="loan-use">Describe how you are planning to use this loan:</label>
+            <p>Kindly be as descriptive as possible because this will be accounted for loan approval.</p>
+            <textarea name="loan-use" id="loan-use" placeholder="I plan to use this loan to..." required></textarea>
+            <p>
+
+            </p>
+            <ul>
+
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <!-- section 2 -->
+            <legend><span class="section"></span>Panchayat Official Details</legend>
+            <label for="salutation">Salutation:</label>
+            <select name="sal" id="salutation" required>
+                <optgroup label="Salutation">
+                    <option value="miss" id="sal_miss">Miss</option>
+                    <option value="mr" id="sal_mr">Mr.</option>
+                    <option value="mrs" id="sal_mrs">Mrs.</option>
+                </optgroup>
+            </select>
+            <!-- <legend><span class="section"></span>fill out this basic Information</legend> -->
+            <label class="" for="name">Full Name:</label>
+            <input type="text" name="name" value="" id="name" required />
+
+            <label class="" for="email">Email Id:</label>
+            <input type="email" name="email" value="" id="email" required />
+            <label for="Phone">Phone Number:</label>
+            <input type="number" name="phno" value="" id="phone_number" required />
+            <p>These details are required to establish contact with the Panchayat Official to confirm the details given
+                during eKYC and the applicant's need for loan.</p>
+            <br /><br />
+            <input type="checkbox" id="declaration" value="dec-signed" onclick="check()">
+            <label for="declaration">I hereby declare that I am ready for the following information to be shared with
+                the appointed Panchayat Official: need for loan and identification details with proof of
+                identity.</label>
+            <h1></h1>
+            <button type="submit" id="loanAppBtn">Apply</button>
+
+
+
+    </form>
+    <script src="../../../firebase.js"></script>
+    <script src="loanApp.js"></script>
+</body>
+
+</html>
