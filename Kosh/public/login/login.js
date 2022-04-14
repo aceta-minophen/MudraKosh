@@ -114,6 +114,7 @@ var uiConfig = {
                             isSigned = true;
                             window.location.href = '../profile/borrower/borrowerProfile.html';
                             //signInURL = 'registration/registration.html';
+                            //window.location.href = '../otpVerif/otpVer.html';
                         } else if (role == 'investor') {
                             isSigned = true;
                             window.location.href = '../profile/investor/investorProfile.html';
