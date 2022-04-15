@@ -1,3 +1,48 @@
+var system = [];
+var k = '';
+
+var app = new Vue({
+    el: '#app',
+    methods: {
+        inputenter(id) {
+
+            const inputs = document.querySelectorAll('#otp > *[id]');
+            for (let i = 0; i < inputs.length; i++) {
+                var a = '';
+                inputs[i].addEventListener('keydown', function (event) {
+                    if (event.key === "Backspace") {
+                        inputs[i].value = '';
+                        if (i !== 0) inputs[i - 1].focus();
+                    } else {
+                        if (i === inputs.length - 1 && inputs[i].value !== '') {
+                            a = inputs[i].value;
+                            return true;
+                        } else if (event.keyCode > 47 && event.keyCode < 58) {
+                            inputs[i].value = event.key;
+                            if (i !== inputs.length - 1) inputs[i + 1].focus();
+                            event.preventDefault();
+                        } else if (event.keyCode > 64 && event.keyCode < 91) {
+                            inputs[i].value = String.fromCharCode(event.keyCode);
+                            if (i !== inputs.length - 1) inputs[i + 1].focus();
+                            event.preventDefault();
+                        }
+                    }
+                });
+                //var a = inputs[i].value;
+                k = a + " ";
+                console.log(k);
+                // console.log(inputs[i].value);
+            }
+            /* let otp = inputs.toString();
+            console.log(otp); */
+        }
+
+    }
+
+});
+
+console.log(k);
+
 var appKey = "e7y4yfajotyda8i5i9um";
 
 
@@ -31,39 +76,5 @@ firebase.auth().onAuthStateChanged(user => {
 
 
 
-$(document).ready(function () {
-    $('#widget-point').append(
-        '<div id="xyz" data-widget data-locale="en" data-mode="signup" data-type="dual"></div>'
-    );
-    $('#xyz').each(function () {
-        var appKey = "e7y4yfajotyda8i5i9um";
-        var settings = $(this).data();
-        settings.app = appKey;
-        settings.events = {
-            signup: function (event, formValues) {
-                console.log("Signup: formValues:", formValues);
-                //window.location.replace('https://get.ringcaptcha.com/king-authr-login-2');
-            }
-        };
-        settings.form = [
-            {
-                id: 'email',
-                type: 'email',
-                placeholder: 'Email',
-                validations: {
-                    presence: 'Email should be present',
-                    format: { message: 'Invalid email' }
-                }
-            },
-            {
-                id: 'phone',
-                type: 'phone',
-                validations: {
-                    length: { min: 5, max: 15, message: 'Invalid phone' }
-                }
-            }
-        ];
-        settings.userManagement = true;
-        new RingCaptcha.Widget(this, settings.app, settings);
-    });
-});
+var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+console.log(seq);

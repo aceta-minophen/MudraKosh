@@ -93,6 +93,40 @@ function checkCookie(req, res, next) {
         });
 }
 
+
+
+
+
+const accountSid = 'AC3c89cc6a55ab81d8dbc00d545ed52937'; // Your Account SID from www.twilio.com/console
+const authToken = '84aac510cafb6e11e739393405f72639'; // Your Auth Token from www.twilio.com/console
+
+const twilio = require('twilio');
+const client = new twilio(accountSid, authToken);
+
+/* client.messages
+    .create({
+        body: 'Hello from Node',
+        to: '+919205543245', // Text this number
+        from: '+19896238928', // From a valid Twilio number
+    })
+    .then((message) => console.log(message.sid));
+ */
+
+client.verify.services.create({ friendlyName: 'My First Verify Service' })
+    .then(service => console.log(service.sid));
+client.verify.services(accountSid)
+    .verifications
+    .create({ to: '+919205543245', channel: 'sms' })
+    .then(verification => console.log(verification.status));
+
+/* client.verify.services(accountSid)
+    .verificationChecks
+    .create({ to: '+919205543245', code: '393950' })
+    .then(verification_check => console.log(verification_check.status)); */
+
+
+
+
 /*Running the server on port 8080*/
 app.listen("8080", () => {
     console.log('listening.....');
