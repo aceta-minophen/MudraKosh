@@ -114,16 +114,19 @@ const client = new twilio(accountSid, authToken);
 
 
 function otpGen() {
-    admin.database().ref('otVerif/otp/').once('value', (snap) => {
-        var otp = snap.val();
-        console.log(otp);
+    admin.database().ref('otVerif/').once('value', (snap) => {
+        var otp = snap.val().otp;
+        var phoneNum = snap.val().phoneNo;
+        //console.log(phoneNum);
+        //console.log(otp);
+
         if (otp == null) {
-            console.log("No OTP");
+            //console.log("No OTP");
         } else {
             client.messages
                 .create({
                     body: 'Your OTP for logging in to MudraKosh is: ' + otp,
-                    to: '+919205543245', // Text this number
+                    to: '+91' + phoneNum, // Text this number
                     from: '+19896238928', // From a valid Twilio number
                 })
                 .then((message) => console.log(message.sid));

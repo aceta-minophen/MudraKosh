@@ -117,7 +117,7 @@ var uiConfig = {
                             window.location.href = '../otpVerif/otpVer.html';
                         } else if (role == 'investor') {
                             isSigned = true;
-                            window.location.href = '../profile/investor/investorProfile.html';
+                            window.location.href = '../otpVerif/otpVer.html';
                         }
 
                         console.log(isSigned);

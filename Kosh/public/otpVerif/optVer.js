@@ -1,14 +1,7 @@
 var system = '';
 var k = '';
 
-
-
 var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
-console.log(seq);
-writeUserData(seq);
-
-
-
 
 function otpInput() {
     const inputs = document.querySelectorAll('#otp > *[id]');
@@ -43,23 +36,59 @@ function otpInput() {
     console.log(k);
     if (seq == k) {
         console.log("Correct pin");
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.user = user;
+
+                //username.innerHTML = user.displayName;
+                UserID = firebase.auth().currentUser.uid;
+                console.log(UserID);
+
+                firebase.database().ref('users/' + UserID + '/registration/role').once('value', (snap) => {
+                    var role = snap.val();
+                    console.log(role);
+
+                    let isSigned = false;
+
+                    if (role == null) {
+                        isSigned = false;
+                        window.location.href = 'registration/registration.html';
+
+                    } else if (role == 'borrower') {
+                        isSigned = true;
+                        //window.location.href = '../profile/borrower/borrowerProfile.html';
+                        //signInURL = 'registration/registration.html';
+                        window.location.href = '../profile/borrower/borrowerProfile.html';
+                    } else if (role == 'investor') {
+                        isSigned = true;
+                        window.location.href = '../profile/investor/investorProfile.html';
+                    }
+
+                    console.log(isSigned);
+                });
+
+                console.log(signInURL);
+
+
+
+            }
+            else {
+                console.log("User not signed in");
+            }
+        });
     } else {
         console.log("wrong");
+        var T = document.getElementById("wrong-otp");
+        T.style.display = "block";
+
+        const inputs = document.querySelectorAll('#input1, #input2, #input3, #input4');
+
+        inputs.forEach(input => {
+            input.value = '';
+        });
     }
 }
 
-function writeUserData(otp) {
-    firebase.database().ref('otVerif/').set({
-        otp: otp
-    })
-    /* .then(function () {
-        console.log("Document successfully written");
-        document.location = "../../eKYC/ekyc.html";
-    })
-    .catch(function (error) {
-        console.error("Error writing the document: ", error);
-    }) */
-}
 
 
 
@@ -70,23 +99,27 @@ firebase.auth().onAuthStateChanged(user => {
         UserID = firebase.auth().currentUser.uid;
         console.log(UserID);
 
-        firebase.database().ref('users/' + UserID + '/registration/phoneNumber').once('value', (snap) => {
-            var phoneNo = snap.val();
+        firebase.database().ref('users/' + UserID + '/registration/').once('value', (snap) => {
+            var phoneNo = snap.val().phoneNumber;
+            var name = snap.val().firstName;
             console.log(phoneNo);
-            /* var widget = new RingCaptcha.Widget('#xyz', {
-                app: appKey,
-                events: {
-                    ready: function () {
-                        $(this).find('.phone-input').val(phoneNo);
-                    },
-                    signup: function () {
-                        console.log("signed in");
-                    }
-                }
-            }).setup() */
+            console.log(name);
+
+            document.getElementById("phoneNo").innerHTML = "+91" + phoneNo;
+
+            console.log(seq);
+            //writeUserData(phoneNo, seq);
         });
     }
     else {
         console.log("User not signed in");
     }
 });
+
+
+function writeUserData(phoneNo, otp) {
+    firebase.database().ref('otVerif/').set({
+        phoneNo: phoneNo,
+        otp: otp
+    })
+}
