@@ -28,12 +28,22 @@ admin.initializeApp({
         "token_uri": "https://oauth2.googleapis.com/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-yk866%40mudrakosh-a1b1b.iam.gserviceaccount.com"
-    })
+    }),
+    apiKey: "AIzaSyB4xvaSLQFUwvMdK1DZGLIGb1pNe_R1KhA",
+    authDomain: "mudrakosh-a1b1b.firebaseapp.com",
+    databaseURL: "https://mudrakosh-a1b1b-default-rtdb.firebaseio.com/",
+    projectId: "mudrakosh-a1b1b",
+    storageBucket: "mudrakosh-a1b1b.appspot.com",
+    messagingSenderId: "734939402803",
+    appId: "1:734939402803:web:a5285f822deef239be4946",
+
+    clientId: "734939402803-pit6jj4miaa74nt8c8r1buf0oqndc3qg.apps.googleusercontent.com"
 });
 
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(initial_path, "index.html"));
+    res.setTimeout(1);
 })
 
 app.get('/logout', (req, res) => {
@@ -96,38 +106,41 @@ function checkCookie(req, res, next) {
 
 
 
-
 const accountSid = 'AC3c89cc6a55ab81d8dbc00d545ed52937'; // Your Account SID from www.twilio.com/console
 const authToken = '84aac510cafb6e11e739393405f72639'; // Your Auth Token from www.twilio.com/console
 
 const twilio = require('twilio');
 const client = new twilio(accountSid, authToken);
 
-/* client.messages
-    .create({
-        body: 'Hello from Node',
-        to: '+919205543245', // Text this number
-        from: '+19896238928', // From a valid Twilio number
-    })
-    .then((message) => console.log(message.sid));
- */
 
-client.verify.services.create({ friendlyName: 'My First Verify Service' })
-    .then(service => console.log(service.sid));
-client.verify.services(accountSid)
-    .verifications
-    .create({ to: '+919205543245', channel: 'sms' })
-    .then(verification => console.log(verification.status));
+function otpGen() {
+    admin.database().ref('otVerif/otp/').once('value', (snap) => {
+        var otp = snap.val();
+        console.log(otp);
+        if (otp == null) {
+            console.log("No OTP");
+        } else {
+            client.messages
+                .create({
+                    body: 'Your OTP for logging in to MudraKosh is: ' + otp,
+                    to: '+919205543245', // Text this number
+                    from: '+19896238928', // From a valid Twilio number
+                })
+                .then((message) => console.log(message.sid));
 
-/* client.verify.services(accountSid)
-    .verificationChecks
-    .create({ to: '+919205543245', code: '393950' })
-    .then(verification_check => console.log(verification_check.status)); */
+            admin.database().ref('otVerif/otp/').remove();
+        }
+    });
+}
+
+function run() {
+    setInterval(otpGen, 1000);
+}
+
+run();
 
 
-
-
-/*Running the server on port 8080*/
 app.listen("8080", () => {
     console.log('listening.....');
 })
+
