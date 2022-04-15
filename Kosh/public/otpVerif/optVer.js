@@ -8,14 +8,14 @@ var app = new Vue({
 
             const inputs = document.querySelectorAll('#otp > *[id]');
             for (let i = 0; i < inputs.length; i++) {
-                var a = '';
+                var a = inputs[i].value;
                 inputs[i].addEventListener('keydown', function (event) {
                     if (event.key === "Backspace") {
                         inputs[i].value = '';
                         if (i !== 0) inputs[i - 1].focus();
                     } else {
                         if (i === inputs.length - 1 && inputs[i].value !== '') {
-                            a = inputs[i].value;
+
                             return true;
                         } else if (event.keyCode > 47 && event.keyCode < 58) {
                             inputs[i].value = event.key;
@@ -33,6 +33,8 @@ var app = new Vue({
                 console.log(k);
                 // console.log(inputs[i].value);
             }
+            k = a + " ";
+            console.log(k);
             /* let otp = inputs.toString();
             console.log(otp); */
         }
