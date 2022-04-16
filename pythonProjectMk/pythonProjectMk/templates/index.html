@@ -1,38 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Crop-Recommendation</title>
 </head>
+<style>
+    body {
+        background-image: url('https://cdn.wallpapersafari.com/81/97/TVPmNh.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+</style>
+
 <body>
-<h1>Crop Recommendation</h1>
-{% if result %}
-    <p>{{ result }}</p>
-{% endif %}
-<form method="post" action="/predict">
-    <label>Nitrogen</label><br>
-    <input type ="text" name="Nitrogen"><br><br>
+    <h1>
+        <center>CROP RECOMMENDER</center>
+    </h1>
+    {% if result %}
+    <center>
+        <h2>You should grow: {{ result }}</h2>
+    </center>
+    {% endif %}
+    <form method="post" action="/predict">
+        <label style="font-size: 17px">Nitrogen</label><br>
+        <input type="text" name="Nitrogen" placeholder="Enter a value Eg. 50" style="font-weight: bold">
 
-    <label>Phosphorus</label><br>
-    <input type ="text" name="Phosphorus"><br><br>
+        <br><br>
 
-    <label>Potassium</label><br>
-    <input type ="text" name="Potassium"><br><br>
+        <label style="font-size: 17px">Phosphorus</label><br>
+        <input type="text" name="Phosphorus" placeholder="Enter a value Eg. 50" style="font-weight: bold"><br><br>
 
-    <label>Temperature</label><br>
-    <input type ="text" name="Temperature"><br><br>
+        <label style="font-size: 17px">Potassium</label><br>
+        <input type="text" name="Potassium" placeholder="Enter a value Eg. 50" style="font-weight: bold"><br><br>
 
-    <label>Humidity</label><br>
-    <input type ="text" name="Humidity"><br><br>
+        <label style="font-size: 17px">Temperature (in degree Celcius)</label><br>
+        <input type="text" name="Temperature" placeholder="Enter a value Eg. 50" style="font-weight: bold"><br><br>
 
-    <label>pH</label><br>
-    <input type ="text" name="pH"><br><br>
+        <label style="font-size: 17px">Humidity (in %)</label><br>
+        <input type="text" name="Humidity" placeholder="Enter a value in %" style="font-weight: bold"><br><br>
 
-    <label>Rainfall</label><br>
-    <input type ="text" name="Rainfall"><br><br>
+        <label style="font-size: 17px">pH</label><br>
+        <input type="text" name="pH" placeholder="Enter a value (Range 1-14)" style="font-weight: bold"><br><br>
 
-    <input type ="submit" value="Predict"><br><br>
-</form>
+        <label style="font-size: 17px">Rainfall (in mm)</label><br>
+        <input type="text" name="Rainfall" placeholder="Enter a value (in mm)" style="font-weight: bold"><br><br>
+
+        <input type="submit" name="Predict" value="Predict"
+            style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;"><br><br>
+    </form>
+
 
 </body>
+
 </html>
