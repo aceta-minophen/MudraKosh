@@ -5,9 +5,24 @@ let dateOfBirth = document.getElementById("dob");
 
 dateOfBirth.addEventListener('input', updateValue);
 
+
+
 function updateValue(e) {
     console.log(e.target.value);
+
+    const a = new Date(dateOfBirth.value).getFullYear();
+    const current = new Date();
+    const currYear = current.getFullYear();
+    console.log(a);
+    console.log(currYear);
+
+    const age = currYear - a;
+    console.log(age);
+
 }
+
+
+
 
 /* firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -66,6 +81,15 @@ function formSubmit(e) {
 
     //A6 - DOB
     let DOB = document.querySelector('#dob').value;
+    let dateOfBirth = document.getElementById("dob");
+    const a = new Date(dateOfBirth.value).getFullYear();
+    const current = new Date();
+    const currYear = current.getFullYear();
+    console.log(a);
+    console.log(currYear);
+    let age = currYear - a;
+    console.log(age);
+
 
     //A7 - Nationality
     let nationality = document.querySelector('#country').value;
@@ -158,7 +182,7 @@ function formSubmit(e) {
             username.innerHTML = user.displayName;
             UserID = firebase.auth().currentUser.uid;
             console.log(UserID);
-            ekycWriteToDB(UserID, applicantName, relativeName, gender, maritalStat, DOB, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned);
+            ekycWriteToDB(UserID, applicantName, relativeName, gender, maritalStat, DOB, age, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned);
             getFileUrl("Signature");
             getFileUrl("PermAdd1");
             getFileUrl("AddressProof1");
@@ -181,13 +205,14 @@ function formSubmit(e) {
 }
 
 
-function ekycWriteToDB(userId, applicantName, relativeName, gender, maritalStat, DOB, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned) {
+function ekycWriteToDB(userId, applicantName, relativeName, gender, maritalStat, DOB, age, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned) {
     firebase.database().ref('users/' + userId + '/eKYC/IdentityDetails/').set({
         Name: applicantName,
         Relative: relativeName,
         gender: gender,
         maritalStatus: maritalStat,
         dob: DOB,
+        age: age,
         nationality: nationality,
         residentialStat: status,
         proofOfIdentity: proofOfIdentity
@@ -218,10 +243,10 @@ function ekycWriteToDB(userId, applicantName, relativeName, gender, maritalStat,
                         console.log(redirect);
 
                         if (redirect == "investor") {
-                            document.location = "../profile/investor/investorProfile.html";
+                            document.location = "../otpVerif/otpVer.html";
                         }
                         else if (redirect == "borrower") {
-                            document.location = "../profile/borrower/borrowerProfile.html";
+                            document.location = "../otpVerif/otpVer.html";
                         }
                     });
                 }
