@@ -1,3 +1,48 @@
+let loanRange = document.querySelector('#loan-range');
+
+loanRangeVal = loanRange.value;
+console.log(loanRangeVal);
+
+
+let instruction = document.getElementById("inputInstruct");
+
+var interestRate = document.getElementById("IR");
+var firstInstall = document.getElementById("1stInstal");
+var increment = document.getElementById("increment");
+
+
+loanRange.addEventListener('input', updateValue);
+
+function updateValue(e) {
+    console.log(e.target.value);
+    if (e.target.value == 10000) {
+        instruction.innerHTML = "Enter value in the range of Rs. 10,000 - 50,000 to apply for loan.";
+        interestRate.innerHTML = "7.5%";
+        firstInstall.innerHTML = "20%";
+        increment.innerHTML = "5%";
+    } else if (e.target.value == 50000) {
+        instruction.innerHTML = "Enter value in the range of Rs. 50,000 - 1,00,000 to apply for loan.";
+        interestRate.innerHTML = "7.5%";
+        firstInstall.innerHTML = "10%";
+        increment.innerHTML = "2.5%";
+    } else if (e.target.value == 100000) {
+        instruction.innerHTML = "Enter value in the range of Rs. 1,00,000 -  2,00,000  to apply for loan.";
+        interestRate.innerHTML = "7.5%";
+        firstInstall.innerHTML = "5%";
+        increment.innerHTML = "2.5%";
+    } else if (e.target.value == 200000) {
+        instruction.innerHTML = "Enter value in the range of Rs. 2,00,000 -  3,00,000  to apply for loan.";
+        interestRate.innerHTML = "8.5%";
+        firstInstall.innerHTML = "3.33%";
+        increment.innerHTML = "0.83%";
+    }
+}
+
+
+
+
+
+
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         this.user = user;
@@ -22,13 +67,13 @@ firebase.auth().onAuthStateChanged(user => {
         firebase.database().ref('users/' + UserID + '/eKYC/AddressDetails/address1').once('value', (snap) => {
             var address = snap.val();
             console.log(address);
-            document.getElementById("address").innerHTML = address;
+            //document.getElementById("address").innerHTML = address;
         });
 
         firebase.database().ref('users/' + UserID + '/registration/field').once('value', (snap) => {
             var field = snap.val();
             //console.log(lastName);
-            document.getElementById("field").innerHTML = field;
+            //document.getElementById("field").innerHTML = field;
         });
     }
     else {
@@ -68,7 +113,7 @@ function formSubmit(e) {
     e.preventDefault();
     // Get Values from the DOM
     let loanAmt = document.querySelector('#loan-amt').value;
-    let crop = document.querySelector('#crop').value;
+    //let crop = document.querySelector('#crop').value;
     let desc = document.querySelector('#loan-use').value;
     let panchOffSal = document.querySelector('#salutation').value;
     let panchOffName = document.querySelector('#name').value;
@@ -101,8 +146,10 @@ function formSubmit(e) {
             var today = new Date();
             var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 
+            let approved = "no";
 
-            writeUserData(UserID, loanAmt, crop, desc, panchOffName, email, phoneNum, panchOffSal, date, decSigned.checked);
+
+            writeUserData(UserID, loanAmt, desc, panchOffName, email, phoneNum, panchOffSal, date, decSigned.checked, approved);
         }
         else {
             console.log("User not signed in");
@@ -111,17 +158,17 @@ function formSubmit(e) {
 }
 
 
-function writeUserData(UserID, loanAmt, crop, desc, panchOffName, email, phoneNum, panchOffSal, date, declaration) {
+function writeUserData(UserID, loanAmt, desc, panchOffName, email, phoneNum, panchOffSal, date, declaration, approved) {
     firebase.database().ref('users/' + UserID + '/loanApplication/').set({
         loanAmountt: loanAmt,
-        crop: crop,
         description: desc,
         panchOffName: panchOffName,
         email: email,
         phoneNumber: phoneNum,
         panchOffSal: panchOffSal,
         date: date,
-        declaration: declaration
+        declaration: declaration,
+        approved: approved
     })
         .then(function () {
             console.log("Document successfully written");

@@ -81,23 +81,29 @@ firebase.auth().onAuthStateChanged(user => {
             document.getElementById("cibil").innerHTML = cibil;
         });
 
-        firebase.database().ref('users/' + UserID + '/loanApplication/crop').once('value', (snap) => {
-            var crop = snap.val();
-            console.log(crop);
+        firebase.database().ref('users/' + UserID + '/loanApplication/approved').once('value', (snap) => {
+            var approved = snap.val();
+            console.log(approved);
 
             let status = document.getElementById("status");
 
             let loanAppBtn = document.getElementById("not-btn");
 
-            if (crop == null) {
+            if (approved == null) {
                 document.getElementById("status").innerHTML = "Loan not applied";
                 status = "Loan Not Applied";
                 status.innerHTML;
                 console.log(status);
 
-            } else {
+            } else if (approved == "no") {
                 document.getElementById("status").innerHTML = "Loan is in the process of being approved.";
                 status = "Loan is in the process of being approved.";
+                status.innerHTML;
+                console.log(status);
+                loanAppBtn.style.display = "none";
+            } else if (approved == "yes") {
+                document.getElementById("status").innerHTML = "Loan has been approved and allotted.";
+                status = "Loan has been approved and allotted.";
                 status.innerHTML;
                 console.log(status);
                 loanAppBtn.style.display = "none";

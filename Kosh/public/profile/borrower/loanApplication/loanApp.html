@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <div class="userName">
         <p class="child">Hello, </p>
         <p id="firstName" class="child"></p>
@@ -35,19 +35,26 @@
             <legend><span class="section"></span>Fill out this basic Information</legend>
             <legend><span class="section"></span></legend>
             <legend><span class="section"></span></legend>
-            <label for="loan-amt">Loan Amount (Rs.)</label>
-            <select name="loan-amt" id="loan" required>
+            <label for="loan-range">Loan Amount Range (Rs.)</label>
+            <select name="loan-range" id="loan-range" required>
                 <optgroup label="Select the Loan Amount">
-                    <option value="10000">10000</option>
-                    <option value="15000">15000</option>
-                    <option value="20000">20000</option>
+                    <option value="10000">10,000 - 50,000</option>
+                    <option value="50000">50,000 - 1,00,000</option>
+                    <option value="100000">1,00,000 - 2,00,000</option>
+                    <option value="200000">2,00,000 - 3,00,000</option>
                 </optgroup>
             </select>
             <!-- <legend><span class="section"></span>fill out this basic Information</legend> -->
             <label class="" for="loan-amt">Enter the amount:</label>
             <input type="number" name="name" value="" id="loan-amt" required />
+            <small id="inputInstruct">Enter value in the range of Rs. 10,000 - 50,000 to apply for loan.</small>
+            <p>Annual Interest Rate: <span id="IR">7.5%</span>; The first installment will be <span
+                    id="1stInstal">20%</span> of the total amount applied for with <span id="increment">5%</span>
+                increment in succeeding installments upon successful return of the first
+                amount with specified interest rate in the allotted time period. Maximum time period for return of the
+                first intallment is 1 year.</p>
 
-            <div class="address">
+            <!-- <div class="address">
                 <label>Is this your address?</label>
                 <p id="address"></p>
                 <select name="address-correct" id="address-correct" required>
@@ -56,8 +63,8 @@
                         <option value="address-wrong">No</option>
                     </optgroup>
                 </select>
-            </div>
-            <label>Enter reason for obtaining loan in the selected field: </label>
+            </div> -->
+            <!-- <label>Enter reason for obtaining loan in the selected field: </label>
             <p id="field"></p>
             <label for="loan-reason">Select the crop you wish to plant:</label>
             <select name="Select the crop" id="crop" required>
@@ -91,11 +98,11 @@
                     <option value="linseed">Linseed</option>
                     <option value="other oilseeds">Other Oilseeds</option>
                 </optgroup>
-            </select>
+            </select> -->
             <br>
             <br>
             <label for="loan-use">Describe how you are planning to use this loan:</label>
-            <p>Kindly be as descriptive as possible because this will be accounted for loan approval.</p>
+            <p>Kindly be as descriptive as possible because your answer will be accounted for loan approval.</p>
             <textarea name="loan-use" id="loan-use" placeholder="I plan to use this loan to..." required></textarea>
             <p>
 
