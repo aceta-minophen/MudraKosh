@@ -102,6 +102,13 @@ function formSubmit(e) {
 
     //A10 - Proof of identity UPLOAD
 
+
+    //A11 - Applicant's Monetary Details
+    let profession = document.querySelector("#profession").value;
+    let annIncome = document.querySelector("#annInc").value;
+    let expenditure = document.querySelector("#expenditure").value;
+    let cibilScore = document.querySelector("#cibil").value;
+
     //SECTION B
     //B1 - Address 1
     let street1 = document.querySelector('#Street1').value;
@@ -182,13 +189,14 @@ function formSubmit(e) {
             username.innerHTML = user.displayName;
             UserID = firebase.auth().currentUser.uid;
             console.log(UserID);
-            ekycWriteToDB(UserID, applicantName, relativeName, gender, maritalStat, DOB, age, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned);
+            ekycWriteToDB(UserID, applicantName, relativeName, gender, maritalStat, DOB, age, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned, profession, annIncome, expenditure, cibilScore);
             getFileUrl("Signature");
             getFileUrl("PermAdd1");
             getFileUrl("AddressProof1");
             getFileUrl("AddressProof2");
             getFileUrl("PassportSizePhoto");
             getFileUrl("ProofOfIdentity");
+            getFileUrl("CIBIL Report");
 
             //AddressProofSelect(UserID);
 
@@ -205,7 +213,7 @@ function formSubmit(e) {
 }
 
 
-function ekycWriteToDB(userId, applicantName, relativeName, gender, maritalStat, DOB, age, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned) {
+function ekycWriteToDB(userId, applicantName, relativeName, gender, maritalStat, DOB, age, nationality, status, proofOfIdentity, address1, email, phoneNo, address2, isSigned, dateSigned, profession, annIncome, expenditure, cibilScore) {
     firebase.database().ref('users/' + userId + '/eKYC/IdentityDetails/').set({
         Name: applicantName,
         Relative: relativeName,
@@ -216,6 +224,14 @@ function ekycWriteToDB(userId, applicantName, relativeName, gender, maritalStat,
         nationality: nationality,
         residentialStat: status,
         proofOfIdentity: proofOfIdentity
+    });
+
+    firebase.database().ref('users/' + userId + '/eKYC/MonetaryDetails/').set({
+        age: age,
+        profession: profession,
+        annIncome: annIncome,
+        expenditure: expenditure,
+        cibilScore: cibilScore
     });
 
     firebase.database().ref('users/' + userId + '/eKYC/AddressDetails/').set({

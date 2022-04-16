@@ -59,12 +59,26 @@ firebase.auth().onAuthStateChanged(user => {
         firebase.database().ref('users/' + UserID + '/loanApplication/date').once('value', (snap) => {
             var date = snap.val();
             console.log(date);
-            document.getElementById("loan-app-date").innerHTML = date;
+            if (date == null) {
+                document.getElementById("loan-app-date").innerHTML = "-";
+            } else {
+                document.getElementById("loan-app-date").innerHTML = date;
+            }
         });
         firebase.database().ref('users/' + UserID + '/loanApplication/loanAmountt').once('value', (snap) => {
             var loanAmt = snap.val();
             console.log(loanAmt);
-            document.getElementById("loan-amt").innerHTML = loanAmt;
+            if (loanAmt == null) {
+                document.getElementById("loan-amt").innerHTML = '-';
+            } else {
+                document.getElementById("loan-amt").innerHTML = loanAmt;
+            }
+
+        });
+        firebase.database().ref('users/' + UserID + '/eKYC//MonetaryDetails/cibilScore').once('value', (snap) => {
+            var cibil = snap.val();
+            console.log(cibil);
+            document.getElementById("cibil").innerHTML = cibil;
         });
 
         firebase.database().ref('users/' + UserID + '/loanApplication/crop').once('value', (snap) => {

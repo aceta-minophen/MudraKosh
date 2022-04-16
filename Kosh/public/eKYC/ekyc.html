@@ -465,6 +465,45 @@
             </fieldset>
 
 
+            <br>
+            <fieldset>
+                <legend><span class="section"></span>Applicant's Monetary Details</legend>
+                <label class="" for="profession">Profession</label>
+                <input type="text" name="name" value="" id="profession" required />
+                <label class="" for="annInc">Annual Income (Rs.)</label>
+                <input type="text" name="name" value="" id="annInc" required />
+                <br>
+                <br>
+                <label class="" for="expenditure">Estimate monthly expenditure</label>
+                <input type="text" name="name" value="" id="expenditure" required />
+                <br>
+                <small>Kindly be as accurate as possible taking into account all the spending on food, water,
+                    electricity, etc.</small>
+                <br>
+                <br>
+                <label class="" for="cibil">CIBIL Score</label>
+                <input type="text" name="name" value="" id="cibil" required />
+                <small><a
+                        href="https://www.cibil.com/select-plan?&channel=paid&cid=ppc:google:GBCibilScoreSKD&gclid=Cj0KCQjw0umSBhDrARIsAH7FCofg9D0y2OAxoqDZjfZYNtCyFilAtA4TBvgYGbJ8AEwQ7KraT1yesK0aArU8EALw_wcB">Check
+                        your CIBIL score</a></small>
+
+                <fieldset>
+                    <legend><span class="section"></span>Upload CIBIL Report</legend>
+                    <div id="cibilReport">
+                        <div class="drop-zone">
+                            <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                            <input id="cibilReport" type="file" accept=".png, .jpeg, .jpg, .pdf" name="myFile"
+                                class="drop-zone__input">
+                        </div>
+                        <p>Acceptable file types: .png, .jpeg, .jpg, .pdf</p>
+                        <button id="send8">Upload</button>
+                        <p id="uploading8"></p>
+                        <progress value="0" max="100" id="progress8"></progress>
+                    </div>
+                </fieldset>
+            </fieldset>
+
+
         </fieldset>
 
         <fieldset>
@@ -1198,6 +1237,7 @@
     <script src="../JS/uploadingFiles/5uploadingPermAdd1.js"></script>
     <script src="../JS/uploadingFiles/6uploadingPermAdd2.js"></script>
     <script src="../JS/uploadingFiles/7signature.js"></script>
+    <script src="../JS/uploadingFiles/8uploadingCIBIL.js"></script>
 
     <pre id="object"></pre>
     <footer class="p-5 bg-dark text-white text-center position-relative">
