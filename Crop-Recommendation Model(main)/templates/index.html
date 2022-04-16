@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop-Recommendation</title>
+</head>
+<style>
+body {
+  background-image: url('https://cdn.wallpapersafari.com/81/97/TVPmNh.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+<body>
+<h1><center>CROP RECOMMENDER</center></h1>
+{% if result %}
+<center><h2>You should grow: {{ result }}</h2></center>
+{% endif %}
+<form method="post" action="/predict">
+    <label style="font-size: 17px">Nitrogen</label><br>
+    <input type ="text" name="Nitrogen" placeholder="Enter a value Eg. 50" style="font-weight: bold">
+
+    <br><br>
+
+    <label style="font-size: 17px">Phosphorus</label><br>
+    <input type ="text" name="Phosphorus" placeholder="Enter a value Eg. 50" style="font-weight: bold"><br><br>
+
+    <label style="font-size: 17px">Potassium</label><br>
+    <input type ="text" name="Potassium" placeholder="Enter a value Eg. 50" style="font-weight: bold"><br><br>
+
+    <label style="font-size: 17px">Temperature (in degree Celcius)</label><br>
+    <input type ="text" name="Temperature" placeholder="Enter a value Eg. 50" style="font-weight: bold"><br><br>
+
+    <label style="font-size: 17px">Humidity (in %)</label><br>
+    <input type ="text" name="Humidity" placeholder="Enter a value in %" style="font-weight: bold"><br><br>
+
+    <label style="font-size: 17px">pH</label><br>
+    <input type ="text" name="pH" placeholder="Enter a value (Range 1-14)" style="font-weight: bold"><br><br>
+
+    <label style="font-size: 17px">Rainfall (in mm)</label><br>
+    <input type ="text" name="Rainfall" placeholder="Enter a value (in mm)" style="font-weight: bold"><br><br>
+
+    <input type ="submit" name="Predict" value="Predict" style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;"><br><br>
+</form>
+
+
+</body>
+<!--<body>-->
+<!--  <h1>CROP PREDICTION MODEL</h1>-->
+<!--  &lt;!&ndash; <form>-->
+<!--    <label for="fname">Nitrogen:</label><br>-->
+<!--    <input type="integer" id="fname" name="fname"><br>-->
+<!--    <label for="lname">Phosphorus:</label><br>-->
+<!--    <input type="integer" id="lname" name="lname"><br>-->
+<!--    <label for="fname">Potassium:</label><br>-->
+<!--    <input type="integer" id="fname" name="fname"><br>-->
+<!--    <label for="lname">Temperature:</label><br>-->
+<!--    <input type="integer" id="lname" name="lname"><br>-->
+<!--    <label for="fname">Humidity:</label><br>-->
+<!--    <input type="integer" id="fname" name="fname"><br>-->
+<!--    <label for="lname">ph:</label><br>-->
+<!--    <input type="integer" id="lname" name="lname"><br>-->
+
+<!--    <label for="lname">rainfall:</label><br>-->
+<!--    <input type="integer" id="lname" name="lname"><br>-->
+<!--    <br>-->
+<!--    <input type="submit" value="Submit">-->
+
+<!--  </form>-->
+<!--    <p></p> &ndash;&gt;-->
+<!--    <form method="post" action="/predict">-->
+<!--    <div class="form-group">-->
+<!--      <label for="Nitrogen" style="font-size: 17px"><b>Nitrogen</b></label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        id="Nitrogen"-->
+<!--        name="Nitrogen"-->
+<!--        placeholder="Enter the value (example:50)"-->
+<!--        style="font-weight: bold"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="Phosphorous" style="font-size: 17px"-->
+<!--        ><b>Phosphorous</b></label-->
+<!--      >-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        id="Phosphorous"-->
+<!--        name="Phosphorous"-->
+<!--        placeholder="Enter the value (example:50)"-->
+<!--        style="font-weight: bold"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="Pottasium" style="font-size: 17px"><b>Pottasium</b></label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        id="Pottasium"-->
+<!--        name="Pottasium"-->
+<!--        placeholder="Enter the value (example:50)"-->
+<!--        style="font-weight: bold"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+<!--      <div class="form-group">-->
+<!--      <label for="Temperature" style="font-size: 17px"><b>Temperature (in Celcius)</b></label>-->
+<!--      <input-->
+<!--        type="text"-->
+
+<!--        class="form-control"-->
+<!--        id="Temperature"-->
+<!--        name="Temperature"-->
+<!--        placeholder="Enter the value"-->
+<!--        style="font-weight: bold"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+<!--      <div class="form-group">-->
+<!--      <label for="Humidity" style="font-size: 17px"><b>Humidity (in mm)</b></label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        id="Humidity"-->
+<!--        name="Humidity"-->
+<!--        placeholder="Enter the value"-->
+<!--        style="font-weight: bold"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="pH" style="font-size: 17px"><b>ph level</b></label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        id="pH"-->
+<!--        name="pH"-->
+<!--        placeholder="Enter the value"-->
+<!--        style="font-weight: bold"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label for="Rainfall" style="font-size: 17px"><b>Rainfall (in mm)</b></label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        id="Rainfall"-->
+<!--        name="Rainfall"-->
+<!--        placeholder="Enter the value"-->
+<!--        style="font-weight: bold"-->
+<!--        required-->
+<!--      />-->
+<!--    </div>-->
+
+
+<!--    <div class="d-flex justify-content-center">-->
+<!--      <button-->
+<!--        type="submit"-->
+<!--        class="btn btn-info"-->
+<!--        style="color: black; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;"-->
+<!--      >-->
+<!--        Predict-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </form>-->
+
+<!--</body>-->
+</html>
