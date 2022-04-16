@@ -1,5 +1,14 @@
 var username = document.getElementById("user_Name");
 
+let dateOfBirth = document.getElementById("dob");
+
+
+dateOfBirth.addEventListener('input', updateValue);
+
+function updateValue(e) {
+    console.log(e.target.value);
+}
+
 /* firebase.auth().onAuthStateChanged(user => {
     if (user) {
         this.user = user;
