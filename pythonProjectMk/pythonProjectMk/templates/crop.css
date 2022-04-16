@@ -91,16 +91,7 @@ hr {
 }
 
 /* Set a style for the submit/register button */
-.RegisterBtn {
-  background-color: #aa6d04;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
+
 
 .RegisterBtn:hover {
   opacity:1;
@@ -117,7 +108,7 @@ a {
   text-align: right;
 }
 body {
-    background-image: url(https://thumbs.gfycat.com/AnchoredSoulfulCapeghostfrog-mobile.mp4);
+   
     background-color: #cccccc;
     height: 100%;
 }
