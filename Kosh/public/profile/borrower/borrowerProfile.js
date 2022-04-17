@@ -107,6 +107,18 @@ firebase.auth().onAuthStateChanged(user => {
                 status.innerHTML;
                 console.log(status);
                 loanAppBtn.style.display = "none";
+                firebase.database().ref('users/' + UserID + '/loanApplication/loanAmountt').once('value', (snap) => {
+                    var loanAmt = snap.val();
+                    console.log(loanAmt);
+                    if (loanAmt == null) {
+                        document.getElementById("first-Installment").innerHTML = '-';
+                        document.getElementById("return-amt").innerHTML = '-';
+                    } else {
+                        document.getElementById("first-Installment").innerHTML = loanAmt * 0.2;
+                        document.getElementById("return-amt").innerHTML = (loanAmt * 0.2) + (loanAmt * 0.2 * 0.075);
+                    }
+
+                });
 
                 firebase.auth().onAuthStateChanged(user => {
                     if (user) {
@@ -165,11 +177,12 @@ var today = new Date();
 var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 console.log(date);
 
+date1 = today.getDate() + '-' + (today.getMonth() + 1) + '-' + (today.getFullYear() + 1);
 
 
+document.getElementById("approval-date").innerHTML = date;
 
-
-
+document.getElementById("return-id").innerHTML = date1;
 
 
 function setLoanID(loanID) {

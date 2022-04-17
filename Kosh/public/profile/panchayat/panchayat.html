@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchayat</title>
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js">
+    </script>
+    <link rel="stylesheet" href="../../JS/dragndrop/dragndrop.css">
+</head>
+
+<body>
+    <h1>Kindly confirm the following data of <span id="firstNameAbt"></span> to approve their loan.</h1>
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Name</label>
+            </div>
+            <div class="col-md-6">
+                <div class="userName">
+                    <p id="firstNameAbt" class="child"></p>
+                    <p id="lastNameAbt" class="child"> </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Email</label>
+            </div>
+            <div class="col-md-6">
+                <p id="emailID"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Phone</label>
+            </div>
+            <div class="col-md-6">
+                <p id="phoneNo"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Reason for taking loan</label>
+            </div>
+            <div class="col-md-6">
+                <p id="reason">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem rem dolor officia
+                    autem
+                    accusantium, vel, a dicta alias nesciunt, iusto recusandae. Est a doloremque quos placeat
+                    repellendus explicabo non earum?</p>
+            </div>
+            <input type="checkbox" id="declaration"> I hereby declare that all the proveded data is true to my
+            knowledge and
+            undertanding.
+            <legend><span class="section"></span>Kindly upload your signature to confirm</legend>
+            <div id="signature">
+                <div class="drop-zone">
+                    <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                    <input id="signature-file" accept=".png, .jpeg, .jpg, .pdf" type="file" name="myFile"
+                        class="drop-zone__input">
+                </div>
+                <p>Acceptable file types: .png, .jpeg, .jpg, .pdf</p>
+                <button id="send7">Upload</button>
+                <p id="uploading7"></p>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+    <button onclick="window.location='../../index.html'">Submit</button>
+
+    <script src="../../firebase.js"></script>
+    <!-- <script src="panchayat.js"></script> -->
+    <script src="../../JS/dragndrop/dragndrop.js"></script>
+</body>
+
+</html>
