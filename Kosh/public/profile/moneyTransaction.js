@@ -13,14 +13,18 @@ firebase.database().ref('MudraKosh/loans/loanNum').once('value', (snap) => {
 
             firebase.database().ref('MudraKosh/investments/userNum').once('value', (snap) => {
                 var totalUserNo = snap.val();
+                console.log(totalUserNo);
                 while (loanNeeded > 0) {
+
                     for (var investorID = 1; investorID <= totalUserNo; investorID++) {
-                        firebase.database().ref('MudraKosh/investments/' + investorID + '/invAmt').once('value', (snap) => {
+                        console.log(investorID);
+                        /*firebase.database().ref('MudraKosh/investments/' + investorID + '/invAmt').once('value', (snap) => {
                             console.log("Investor ID: " + investorID);
                             var investmentVal = snap.val();
                             console.log("Initial Amount in investor " + investorID + ":" + investmentVal)
                             var subtractFromInv = investmentVal * percFromEachInv;
-                            if (loanNeeded < investmentVal * percFromEachInv) {
+                            //loanNeeded = loanNeeded - 30000;
+                            /* if (loanNeeded < investmentVal * percFromEachInv) {
                                 investmentVal = investmentVal - loanNeeded;
                                 loanNeeded = 0;
                             } else {
@@ -29,8 +33,10 @@ firebase.database().ref('MudraKosh/loans/loanNum').once('value', (snap) => {
                             }
                             console.log("Loan Needed: " + loanNeeded);
                             console.log("Amount subtracted from investor " + investorID + ": " + subtractFromInv);
-                            console.log("Amount left in investor " + investorID + ": " + investmentVal);
-                        });
+                            console.log("Amount left in investor " + investorID + ": " + investmentVal); 
+                        });*/
+                        loanNeeded = loanNeeded - 20000;
+                        console.log(loanNeeded);
                     }
                 }
 
@@ -39,7 +45,17 @@ firebase.database().ref('MudraKosh/loans/loanNum').once('value', (snap) => {
     }
 });
 
+//investmentAmt(1);
 
+console.log(invVal);
+
+let invVal = function investmentAmt(invID) {
+    firebase.database().ref('MudraKosh/investments/' + invID + '/invAmt').once('value', (snap) => {
+        var investmentVal = snap.val();
+        console.log(investmentVal);
+        return investmentVal;
+    });
+}
 
 /* const investors = [123456, 12123100, 32421];
 let totalInv = 2;
