@@ -119,17 +119,23 @@ firebase.auth().onAuthStateChanged(user => {
         //username.innerHTML = user.displayName;
         UserID = firebase.auth().currentUser.uid;
         console.log(UserID);
-        firebase.database().ref('users/' + UserID + '/Investment/investorID/').once('value', (snap) => {
-            var investorID = snap.val();
-            console.log(investorID);
-            if (investorID == null) {
-                firebase.database().ref('MudraKosh/investments/userNum').transaction(current_value => {
-                    console.log((current_value || 0) + 1);
-                    setInvestorID((current_value || 0) + 1);
-                    return (current_value || 0) + 1;
+        firebase.database().ref('users/' + UserID + '/registration/role/').once('value', (snap) => {
+            var role = snap.val();
+            console.log(role);
+            if (role == 'investor') {
+                firebase.database().ref('users/' + UserID + '/Investment/investorID/').once('value', (snap) => {
+                    var investorID = snap.val();
+                    console.log(investorID);
+                    if (investorID == null) {
+                        firebase.database().ref('MudraKosh/investments/userNum').transaction(current_value => {
+                            console.log((current_value || 0) + 1);
+                            setInvestorID((current_value || 0) + 1);
+                            return (current_value || 0) + 1;
+                        });
+                    } else {
+                        console.log("Investor ID already set");
+                    }
                 });
-            } else {
-                console.log("Investor ID already set");
             }
         });
     }

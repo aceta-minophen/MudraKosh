@@ -107,6 +107,37 @@ firebase.auth().onAuthStateChanged(user => {
                 status.innerHTML;
                 console.log(status);
                 loanAppBtn.style.display = "none";
+
+                firebase.auth().onAuthStateChanged(user => {
+                    if (user) {
+                        this.user = user;
+                        //username.innerHTML = user.displayName;
+                        UserID = firebase.auth().currentUser.uid;
+                        console.log(UserID);
+                        firebase.database().ref('users/' + UserID + '/registration/role/').once('value', (snap) => {
+                            var role = snap.val();
+                            console.log(role);
+                            if (role == 'borrower') {
+                                firebase.database().ref('users/' + UserID + '/loanApplication/loanID/').once('value', (snap) => {
+                                    var loanID = snap.val();
+                                    console.log(loanID);
+                                    if (loanID == null) {
+                                        firebase.database().ref('MudraKosh/loans/loanNum').transaction(current_value => {
+                                            console.log((current_value || 0) + 1);
+                                            setLoanID((current_value || 0) + 1);
+                                            return (current_value || 0) + 1;
+                                        });
+                                    } else {
+                                        console.log("Loan ID already set");
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        console.log("User not signed in");
+                    }
+                });
             }
         });
     }
@@ -133,3 +164,50 @@ function getFileUrl(fileName) {
 var today = new Date();
 var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 console.log(date);
+
+
+
+
+
+
+
+
+function setLoanID(loanID) {
+    firebase.database().ref('users/' + UserID + '/loanApplication/loanID/').set({
+        loanID: loanID
+    });
+    firebase.database().ref('MudraKosh/loans/' + loanID).set({
+        loans: 0
+    });
+}
+
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        this.user = user;
+
+        //username.innerHTML = user.displayName;
+        UserID = firebase.auth().currentUser.uid;
+        console.log(UserID);
+        firebase.database().ref('users/' + UserID + '/loanApplication/loanAmountt/').once('value', (snap) => {
+            var loanAmt = snap.val();
+            console.log(loanAmt);
+            firebase.database().ref('users/' + UserID + '/loanApplication/loanID/loanID').once('value', (snap) => {
+                var loanID = snap.val();
+                console.log(loanID);
+                if (loanID > 0) {
+                    firebase.database().ref('MudraKosh/loans/' + loanID).set({
+                        loanAmt: loanAmt
+                    });
+                    firebase.database().ref('MudraKosh/loans/' + loanID + '/loanAmt').once('value', (snap) => {
+                        var loanAmt = snap.val();
+                        console.log(loanAmt);
+                    });
+                }
+            });
+        });
+    }
+    else {
+        console.log("User not signed in");
+    }
+});
