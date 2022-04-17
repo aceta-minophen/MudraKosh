@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest</title>
+    <link rel="shortcut icon" type="image/jpeg" href="../../../mudrakosh.jpeg" />
+    <link rel="stylesheet" href="invest.css">
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js">
+    </script>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
+                    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h3>Choose any domain to invest in</h3>
+                    <p>We offer 7% interest per annum. The investment amount is alloted to verified borrowers who
+                        recieve the investments in micro stages which ensures safety in returns. <a href="">Learn
+                            more</a> about how MudraKosh operates.</p>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Single Advisor-->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" id="agri" value="Agriculture"
+                    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb" style="height: 350px;"><img
+                            src="https://images.clipartlogo.com/files/istock/previews/9051/90511601-wheat-plant.jpg"
+                            alt="">
+                        <!-- Social Info-->
+
+                    </div>
+                    <!-- Team Details-->
+                    <div class="single_advisor_details_info">
+                        <h6>Agriculture</h6>
+                        <p class="designation">Invest in farmers</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Advisor-->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" id="textile"
+                    onclick="selectField()" value="Textile"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb" style="height: 350px;"><img
+                            src="https://thumbs.dreamstime.com/z/simple-ornamental-pattern-textile-print-pattern-fabric-trellis-geometric-pattern-seamless-surface-minimalist-simple-175812383.jpg"
+                            alt="">
+                    </div>
+                    <!-- Team Details-->
+                    <div class="single_advisor_details_info">
+                        <h6>Textile</h6>
+                        <p class="designation">Invest in the textile industry</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Advisor-->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" id="select-field"
+                    onclick="selectField()" value="MSMEs"
+                    style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb" style="height: 350px;"><img
+                            src="https://media.newstrack.in/uploads/latest-news/india-news/Jan/29/big_thumb/MSME2_6013d271d7ff6.jpg"
+                            alt="">
+
+                    </div>
+                    <!-- Team Details-->
+                    <div class="single_advisor_details_info">
+                        <h6>MSMEs</h6>
+                        <p class="designation">Invest in the up and coming</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Advisor-->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" id="select-field"
+                    onclick="selectField()" value="General"
+                    style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <!-- Team Thumb-->
+                    <div class="advisor_thumb" style="height: 350px;"><img
+                            src="https://img.freepik.com/free-photo/minimal-background-investment-uptrend-candlestick-chart-trading-view-3d-rendering_339689-599.jpg"
+                            alt="">
+                    </div>
+                    <!-- Team Details-->
+                    <div class="single_advisor_details_info">
+                        <h6>General</h6>
+                        <p class="designation">Invest in anything</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-lg-6">
+                <!-- Section Heading-->
+                <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
+                    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h3 id="form-start">Fill the following details to finalize the investment</h3>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container p-0">
+
+            <div class="card px-4">
+                <form target="_blank" method="POST" id="registrationform">
+                    <p class="h8 py-3">Payment Details</p>
+                    <div class="row gx-3">
+
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Investment Amount</p> <input class="form-control mb-3"
+                                    type="number" placeholder="Amount in Rs." id="invest-amt">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Card Number</p> <input class="form-control mb-3" type="text"
+                                    placeholder="1234 5678 435678" id="card-no">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Expiry</p> <input class="form-control mb-3" type="text"
+                                    placeholder="MM/YYYY" id="expiry">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">CVV/CVC</p> <input class="form-control mb-3 pt-2 " type="password"
+                                    placeholder="***" id="cvv">
+                            </div>
+                        </div>
+                        <div class="col-12">
+
+                            <button class="btn btn-primary mb-3" type="submit">Invest Rs. <span class="ps-3"
+                                    id="amt">0</span></button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+
+            <script src="../../../firebase.js"></script>
+            <script src="invest.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Profile</title>
+    <link rel="shortcut icon" type="image/jpeg" href="mudrakosh.jpeg" />
+
+    <link rel="stylesheet" href="../profile.css">
+    <link rel="shortcut icon" type="image/jpeg" href="../../mudrakosh.jpeg" />
+    <!-- Firebase Package-->
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js">
+    </script>
+</head>
+
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!------ Include the above in your HEAD tag ---------->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img id="profile-pic" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <div class="userName">
+                            <h5 id="firstName" class="child"></h5>
+                            <h5 id="lastName" class="child"> </h5>
+                        </div>
+                        <style>
+                            .profile-head {
+                                white-space: nowrap;
+                            }
+
+                            .child {
+                                display: inline-block;
+                            }
+                        </style>
+                        <h6 id="field"></h6>
+                        <p class="proile-rating">INVESTMENTS MADE : <span id="invNo">-</span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="false">Track Your Investments</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+
+                        <p>UPDATE PROFILE</p>
+                        <a href="">Profile Picture</a><br />
+                        <a href="">CIBIL Score</a><br />
+                        <a href="">Email</a><br />
+                        <a href="">Phone Number</a>
+                        <p>UPDATE ID DETAILS</p>
+                        <a href="">Proof of Identity</a><br />
+                        <a href="">Change of Address</a><br />
+                        <a href="">CIBIL Report</a><br />
+                        <p>CROP RECOMMENDATION SYSTEM</p>
+                        <a href="">Crop Recommendation System</a><br />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="userName">
+                                        <p id="firstNameAbt" class="child"></p>
+                                        <p id="lastNameAbt" class="child"> </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="emailID"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="phoneNo"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Field</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="field1"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Total Amount Invested</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="tot-inv">-</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Latest Investment</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="lat-inv">-</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Latest Investment Made On</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p id="lat-inv-date">-</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Total Amount Alloted to Borrower</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>-</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Borrowers Invested In</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a class="app-loan-btn" id="not-btn" onclick="location.href='invest/invest.html'">Invest On The
+                        Go!</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../../firebase.js"></script>
+    <script src="investorProfile.js"></script>
+    <script src="../moneyTransaction.js"></script>
+</body>
+
+
+</html>
