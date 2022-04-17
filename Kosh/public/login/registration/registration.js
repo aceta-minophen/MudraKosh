@@ -86,8 +86,4 @@ function writeUserData(userId, salu, fname, mname, lname, email, phoneNum, field
         .catch(function (error) {
             console.error("Error writing the document: ", error);
         })
-
-    firebase.database().ref('funds').set({
-        loan: ''
-    });
 }

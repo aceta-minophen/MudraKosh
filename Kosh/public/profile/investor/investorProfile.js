@@ -1,4 +1,20 @@
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        this.user = user;
 
+        //username.innerHTML = user.displayName;
+        UserID = firebase.auth().currentUser.uid;
+        console.log(UserID);
+        firebase.database().ref('users/' + UserID + '/Investment/investmentNo/').once('value', (snap) => {
+            var invNo = snap.val();
+            console.log(invNo);
+            document.getElementById("invNo").innerHTML = invNo;
+        });
+    }
+    else {
+        console.log("User not signed in");
+    }
+});
 
 
 firebase.auth().onAuthStateChanged(user => {
@@ -58,6 +74,23 @@ firebase.auth().onAuthStateChanged(user => {
         });
 
 
+
+        //TRACK YOUR INVESTMENTS
+        firebase.database().ref('users/' + UserID + '/Investment/TotalInvestmentAmt/').once('value', (snap) => {
+            var totInvAmt = snap.val();
+            console.log(totInvAmt);
+            document.getElementById("tot-inv").innerHTML = totInvAmt;
+        });
+        firebase.database().ref('users/' + UserID + '/Investment/LatestInvestment/').once('value', (snap) => {
+            var latInvAmt = snap.val();
+            console.log(latInvAmt);
+            document.getElementById("lat-inv").innerHTML = latInvAmt;
+        });
+        firebase.database().ref('users/' + UserID + '/Investment/LatestInvestmentDate/').once('value', (snap) => {
+            var latInvDate = snap.val();
+            console.log(latInvDate);
+            document.getElementById("lat-inv-date").innerHTML = latInvDate;
+        });
     }
     else {
         console.log("User not signed in");
@@ -79,3 +112,67 @@ function getFileUrl(fileName) {
 
 }
 
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        this.user = user;
+        //username.innerHTML = user.displayName;
+        UserID = firebase.auth().currentUser.uid;
+        console.log(UserID);
+        firebase.database().ref('users/' + UserID + '/Investment/investorID/').once('value', (snap) => {
+            var investorID = snap.val();
+            console.log(investorID);
+            if (investorID == null) {
+                firebase.database().ref('MudraKosh/investments/userNum').transaction(current_value => {
+                    console.log((current_value || 0) + 1);
+                    setInvestorID((current_value || 0) + 1);
+                    return (current_value || 0) + 1;
+                });
+            } else {
+                console.log("Investor ID already set");
+            }
+        });
+    }
+    else {
+        console.log("User not signed in");
+    }
+});
+
+
+function setInvestorID(invID) {
+    firebase.database().ref('users/' + UserID + '/Investment/investorID/').set({
+        investorID: invID
+    });
+    firebase.database().ref('MudraKosh/investments/' + invID).set({
+        invAmt: 0
+    });
+}
+
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        this.user = user;
+
+        //username.innerHTML = user.displayName;
+        UserID = firebase.auth().currentUser.uid;
+        console.log(UserID);
+        firebase.database().ref('users/' + UserID + '/Investment/TotalInvestmentAmt/').once('value', (snap) => {
+            var totInvAmt = snap.val();
+            console.log(totInvAmt);
+            firebase.database().ref('users/' + UserID + '/Investment/investorID/investorID').once('value', (snap) => {
+                var invID = snap.val();
+                console.log(invID);
+                firebase.database().ref('MudraKosh/investments/' + invID).set({
+                    invAmt: totInvAmt
+                });
+                firebase.database().ref('MudraKosh/investments/' + invID + '/invAmt').once('value', (snap) => {
+                    var invAmt = snap.val();
+                    console.log(invAmt);
+                });
+            });
+        });
+    }
+    else {
+        console.log("User not signed in");
+    }
+});
