@@ -57,7 +57,8 @@ Provides leniency to the defaulters in case of genuine reasons and assistance to
 ### Technology Stacks
 #### ML/AI
 * Python; Flask
-* Regression Model; Clustering; Supervised and semi-supervised learning
+* Logistic Regression, Support Vector Machine(SVM)
+* Dialogflow 
 
 #### Web Development
 * JavaScript
@@ -66,7 +67,6 @@ Provides leniency to the defaulters in case of genuine reasons and assistance to
 
 #### Miscellanious
 * GitHub 
-* AWS; MySQL
 * Figma
 
 
