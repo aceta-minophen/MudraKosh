@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrower Profile</title>
+    <link rel="shortcut icon" type="image/jpeg" href="../../mudrakosh.jpeg" />
+
+    <link rel="stylesheet" href="../profile.css">
+    <!-- Firebase Package-->
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js">
+    </script>
+</head>
+
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!------ Include the above in your HEAD tag ---------->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img" style=" height: 250px;">
+                        <img id="profile-pic" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                        <div class="userName">
+                            <h5 id="firstName" class="child"></h5>
+                            <h5 id="lastName" class="child"> </h5>
+                        </div>
+                        <style>
+                            .profile-head {
+                                white-space: nowrap;
+                            }
+
+                            .child {
+                                display: inline-block;
+                            }
+                        </style>
+                        <h6 id="field"></h6>
+                        <p class="proile-rating">LOAN STATUS : <span id="status"></span></p>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="false">Track Your Loan</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Date of loan application</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="loan-app-date">-</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Loan Amount (Rs.)</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="loan-amt">-</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Date of loan approval</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="approval-date">-</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Current Installment</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="first-Installment">-</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Last date for loam return date</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="return-id">-</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Amount to be returned</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="return-amt">-</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Annual Interest Rate</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p id="interest">7.5%</p>
+                            </div>
+                        </div>
+                        <p>The next installment will be delivered after the current is retuned with interest.</p>
+                        <a href="">Update details of your recent expenditure</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a class="app-loan-btn" id="not-btn" onclick="location.href='loanApplication/loanApp.html'">Apply
+                    for
+                    Loan</a>
+            </div>
+    </div>
+    </form>
+    </div>
+    <object id="investmentVal" hidden></object>
+    <script src="../../firebase.js"></script>
+    <script src="borrowerProfile.js"></script>
+    <script src="../moneyTransaction.js"></script>
+</body>
+
+
+</html>
