@@ -108,7 +108,7 @@ firebase.auth().onAuthStateChanged(user => {
             document.getElementById("phoneNo").innerHTML = "+91" + phoneNo;
 
             console.log(seq);
-            //writeUserData(phoneNo, seq);
+            writeUserData(phoneNo, seq);
         });
     }
     else {
