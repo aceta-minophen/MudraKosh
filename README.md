@@ -31,16 +31,16 @@ Therefore, to eliminate these and consequent problems, MudraKosh aims to provide
 Reduces the requirement of collateral to almost nothing.
 
 > *Microcredit is a common form of microfinance that involves an extremely small loan given to an individual to help them become self-employed or grow a small business.*
+> 
 > **Micro-staged finance scheme** entails the allotment of loan to the borrowers in installments. For example, if the total amount requested by a registered and verified borrower is Rs. 1,00,000, the borrower is not given the amount at once. The reliability of the borrower is tested by alloting them a percentage of the total amount (in this case, 10% i.e. Rs. 10,000). The maximum period for returning this amount with set interest is 1 year. As soon as this amount is returned, the next installment (of Rs. 12,500) is issued with an increment in percentage (2.5% in this case), and so on until the complete loan is allotted successfully.
 
 #### Chatbot and UI
 * User friendly interface encourages  borrowers
 * 24/7 AI powered chatbot customer service available to resolve queries
-* Language preference change available
 
 #### eKYC
 
-Automatic authentications platform using ML adding to system security.
+Authentications platform adding to system security.
 > * Helps lenders perform risk assessment by identifying the previous financial history and assets owned
 > * Limits fraud that result mainly due to hiding of identity
 > * Prevents money laundering and other anti-social activities
@@ -53,28 +53,35 @@ Automatic authentications platform using ML adding to system security.
 #### Reducing Financial Burden on Customers
 Provides leniency to the defaulters in case of genuine reasons and assistance to help them return loan.
 
-### Technology Stacks
+### Technology Stacks and Architecture
 #### ML/AI
 * Python; Flask
 * Logistic Regression, Support Vector Machine(SVM)
 * Dialogflow 
 
 #### Web Development
-* JavaScript
+* Node.js
 * HTML5; CSS3
-* Bootstrap; Django
+* Bootstrap
+* JavaScript
 
 #### Miscellanious
 * GitHub 
 * Figma
+* Twilio (SMS API)
+* Firebase (Firebase Auth, Firebase Realtime Database, Firebase Storage, Firebase Hosting)
+
+
+![image](https://user-images.githubusercontent.com/87569188/163832647-b5411e5f-ec35-44b0-8ada-c1ec9c600fca.png)
 
 
 ****
 ## Links
-* [Architecture Diagram](https://bit.ly/3ItM37p)
+
 * [Flowchart](https://bit.ly/36AV5S2)
 * [Wireframe](https://bit.ly/3Ivbvtw)
 * [Prototype Video](https://bit.ly/36FRUbP)
+* [Demo Video]()
 
 ## Features that are good to have
 * We can use **blockchains** to create a centralized joint register of transaction that is extremely secured. This can eventually lead to no data redundancy and reduce chances of forging as all transactions are available.
@@ -87,6 +94,10 @@ Provides leniency to the defaulters in case of genuine reasons and assistance to
 Technical and practical constraints to be overcome:
 * Lack of sufficient financial support for outreach to the lower class
 * Even after applying maximum security measures, occurrence of fraud is still possible and to be expected 
+
+### Technologies to be added (and the replacements provided to simulate them using the current techstack)
+1. **Digilocker API**: After adding this API to MudraKosh, only the already verified documents (for proof of identity and proof of address) will be allowed to be uploaded by the users for eKYC. As MudraKosh is required to be an officially registered organization to use this API, we cannot impliment it in our project as of now. Instead, an eKYC form is provided to be manually filled by the users.
+2. **BHIM UPI API**: To be used for allowing users to depoosit and withdraw money from MudraKosh. As of now, since this API also requires MudraKosh to be registered as an official organization, we have added a simple form to simulate the transactions. The values are being added and subtracted to and from the database on the backend.  
 
 ## Known Issues
 In order to implement the system we are taking some assumption:
@@ -105,9 +116,3 @@ We will successfully be able to provide loans and assistance services to those i
 We will essentially be able to solve every problem we set out to mitigate.
 ## Social Impact
 Our solution will ultimately impact MSMEs and people without assets to get a secure and sufficient loan via digitalised platform, and help them in growing and industrializing rural and backward areas thereby reducing regional imbalance assuring more equitable distribution of national income and wealth, along with providing financial literacy which will inturn make the whole process more dependable.
-
-
-A proposal for a revolutionary system to deliver fast loans to individuals/MSMEs who are part of any industrial domain, including horticulture, textile, wood, etc.
-The system acts as a direct mediator between the borrowers and lenders. Borrowers apply for loan on the platform. Our system connects with potential lenders to the borrowers and directs the creditflow in fractions (microcredit scheme)
-(Borrowers: Individuals/MSMEs in need of loans; Lenders: Large-scale organizations/interested 3rd parties looking for profitable and secure investments with assured returns)
-Our additional feature also helps provide financial literacy to the targeted audience. Content offered in multiple Indian Languages.
