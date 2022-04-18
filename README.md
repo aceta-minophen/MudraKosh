@@ -34,6 +34,16 @@ Reduces the requirement of collateral to almost nothing.
 > 
 > **Micro-staged finance scheme** entails the allotment of loan to the borrowers in installments. For example, if the total amount requested by a registered and verified borrower is Rs. 1,00,000, the borrower is not given the amount at once. The reliability of the borrower is tested by alloting them a percentage of the total amount (in this case, 10% i.e. Rs. 10,000). The maximum period for returning this amount with set interest is 1 year. As soon as this amount is returned, the next installment (of Rs. 12,500) is issued with an increment in percentage (2.5% in this case), and so on until the complete loan is allotted successfully.
 
+The starting installment, increment, interest rate and return period for different loan amounts are specified in the table given below.
+
+|Loan Amount (Rs.) |% issued in the first installment |Increment (%) |Interest Rate p.a |Return Period for Each Installment |Total no. of Installments |
+|---|---|---|---|---|---|
+|50,000-1,00,000|10%|2.5%|7.5%|1 yr|6|
+|1,00,000 - 2,00,000|5%|1.25%|7.5%|1 yr|9|
+|2,00,000 - 3,00,000|3.33%|0.83%|8.5%|1 yr|13|
+
+<sub><sup>**Note**: MudraKosh allows a maximum of Rs. 3 Lakhs while applying for loans and a minimum of Rs. 50,000.</sup></sub>
+
 #### Chatbot and UI
 * User friendly interface encourages  borrowers
 * 24/7 AI powered chatbot customer service available to resolve queries
