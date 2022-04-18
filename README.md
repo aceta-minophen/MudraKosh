@@ -2,6 +2,8 @@
 
 ***Making more possible.***
 
+<sub><sup>**Note**: Before viewing the [demo](), kindly see the [technological issues](https://github.com/aceta-minophen/MudraKosh/edit/main/README.md#technological-issue).</sup></sub>
+
 India is considered to be the second most unbanked nation with a statistic of 190 million unbanked adults. Due to this, and the added disadvantage of inability to offer any collateral, many individuals are unable to access loans from trustable sources at reasonable interest and sort to unreliable credit source.
 Therefore, to eliminate these and consequent problems, MudraKosh aims to provide:
 * Easy and quick lending accessibility without the need for banks or collateral
@@ -115,6 +117,9 @@ In order to implement the system we are taking some assumption:
 * Local government aid and cooperation available for smooth implementation (panchayat/ local leaders)
 
 The lack of these services will be an issue in the implementation.
+
+### Technological Issue
+* While going through the demo, the OTP may not be delivered to the registered mobile number. This will occur due to restrictions in using public Twilio API. To continue to the next page, the 4 digit OTP will be printed in the console which can be viewed using the following keyboard command: `CTRL + Shift + I`.
 
 ## Solution Implementation and Effectiveness
 The system is implementable on a large scale given that every transaction takes place digitally.
