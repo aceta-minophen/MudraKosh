@@ -16,23 +16,22 @@ Therefore, to eliminate these and consequent problems, MudraKosh aims to provide
 * **Borrowers**: Individuals/MSMEs in need of loans
 * **Lenders**: Large-scale organizations/interested 3rd parties looking for profitable and secure investments with assured returns
 * Our additional feature also helps provide financial literacy to the targeted audience
-* Content offered in multiple Indian Languages.
+
+
 ### A Brief Overview of our Solution
 * The **inflow** of credit starts with viable lenders to lend money for mutual benefit and better service returns.
 * The credit details are processed and maintained by our host wallet **system**.
-* Information is gathered about the borrowers on our platform in several steps by performing **KYC** and credit screening with multiple **ML algorithms** coordinating to detect fraud and provide feedback .
-* Normal lending procedure is pursued with those individuals/MSMEs **with assets** for collateral.
+* Information is gathered about the borrowers on our platform in several steps by performing **KYC** and credit screening using CEBIL report.
 * In case of **no assets**, **micro-staged finance** is executed to test and ensure consistent ethical lending practices.
-* Concession in interest rates is given to non-defaulters.
-* In case of **defaulters**, a chance for recovery is provided in stages; otherwise a loss is declared.
 
 ****
 
-## Features to Build
+## Features of MudraKosh
 #### Microcredit Scheme
 Reduces the requirement of collateral to almost nothing.
 
 > *Microcredit is a common form of microfinance that involves an extremely small loan given to an individual to help them become self-employed or grow a small business.*
+> **Micro-staged finance scheme** entails the allotment of loan to the borrowers in installments. For example, if the total amount requested by a registered and verified borrower is Rs. 1,00,000, the borrower is not given the amount at once. The reliability of the borrower is tested by alloting them a percentage of the total amount (in this case, 10% i.e. Rs. 10,000). The maximum period for returning this amount with set interest is 1 year. As soon as this amount is returned, the next installment (of Rs. 12,500) is issued with an increment in percentage (2.5% in this case), and so on until the complete loan is allotted successfully.
 
 #### Chatbot and UI
 * User friendly interface encourages  borrowers
