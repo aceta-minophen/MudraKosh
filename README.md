@@ -2,7 +2,7 @@
 
 ***Making more possible.***
 
-<sub><sup>**Note**: Before viewing the [demo](), kindly see the [technological issues](https://github.com/aceta-minophen/MudraKosh/edit/main/README.md#technological-issue).</sup></sub>
+<sub><sup>**Note**: Before visiting the [MudraKosh](https://mudrakosh-a1b1b.web.app/), kindly see the [technological issues](https://github.com/aceta-minophen/MudraKosh/edit/main/README.md#technological-issue).</sup></sub>
 
 India is considered to be the second most unbanked nation with a statistic of 190 million unbanked adults. Due to this, and the added disadvantage of inability to offer any collateral, many individuals are unable to access loans from trustable sources at reasonable interest and sort to unreliable credit source.
 Therefore, to eliminate these and consequent problems, MudraKosh aims to provide:
